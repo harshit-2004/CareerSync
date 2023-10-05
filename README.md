@@ -1,2 +1,2 @@
 # CareerSync
-Placement platform for Colleage managed by TPO
+Placement platform for College managed by TPO
