@@ -1,0 +1,13 @@
+.line-making{
+    align-items: center;
+    /* width: 90%; */
+    height: 1px;
+    background-color:black;
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .line-container {
+    display: flex;
+    justify-content: center; /* Horizontally center elements */
+  }
+

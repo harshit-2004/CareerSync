@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,113 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* #logo {
+  size: 2rem;
+  background-image: url(../public/careersynclogo.svg);
+} */
+
+#logoelement1{
+  width: 434px;
+  height: 300px;
+}
+
+.logoclass1{
+  position: relative;
+  display: flex;
+  margin: auto;
+  margin-bottom: -20px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+#loginbutton{
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: #9EC8FF;
+  width: 150px;
+  height: 60px;
+  border-radius: 15px;
+  border-color: #9EC8FF;
+  font-size: 2rem;
+}
+
+.loginclass{
+  flex-direction: row-reverse;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  /* background-color: green; */
+}
+
+.gif-and-text{
+  display: flex;
+}
+
+.text-1024{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
+#text-1{
+  font-size: 4rem;
+}
+
+#line2making{
+  /* background-color: red; */
+  margin-top: -47px;
+  margin-left: 43%;
+  border-left: 1px solid black;
+  height: 47px;
+}
+
+#line3making{
+  margin-left: 30%;
+  border-left: 1px solid black;
+  height: 100px;
+}
+
+.bigbox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: -100px 20px -60px 20px;
+}
+
+.text2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 4rem;
+  margin: 0px 0px 0px 50px;
+}
+
+#text2-1{
+  margin-right: -30px;
+}
+
+#text2-2{
+  align-self: flex-end;
+  margin-right: -50px;
+}
+
+#text2-3{
+  align-self: flex-end;
+  margin-right: -100px;
+}
+
+#setimage3{
+  width: 40%;
+  height: 40%;
+}
+
+#line4making{
+  margin-left: 40%;
+  border-left: 1px solid black;
+  height: 100px;
 }
