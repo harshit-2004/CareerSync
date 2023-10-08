@@ -78,6 +78,7 @@
 
 .gif-and-text{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .text-1024{
@@ -136,12 +137,53 @@
 }
 
 #setimage3{
-  width: 40%;
-  height: 40%;
+  width: 40rem;
+  height: 40rem;
 }
 
 #line4making{
   margin-left: 40%;
   border-left: 1px solid black;
   height: 100px;
+}
+
+#line5making{
+  margin-left: 50%;
+  border-left: 1px solid black;
+  height: 100px;
+}
+
+.bigbox2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* margin: -100px 20px 0px 20px; */
+  margin-top: -100px;
+  margin-bottom: -100px;
+}
+
+#setimage4{
+  width: 40rem;
+  height: 40rem;
+  margin-left: 50px;
+}
+
+#line6making{
+  margin-left: 75%;
+  border-left: 1px solid black;
+  height: 100px;
+}
+
+.bigtext{
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px 100px 0px;
+}
+
+.textend2{
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px 50px 0px;
 }

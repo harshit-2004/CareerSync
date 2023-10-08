@@ -1,6 +1,7 @@
 .line-making{
     align-items: center;
     /* width: 90%; */
+    position: relative;
     height: 1px;
     background-color:black;
     margin: 0px 0px 0px 0px;
