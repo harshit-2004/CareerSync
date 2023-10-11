@@ -1,0 +1,15 @@
+#box{
+    max-width: 40%;
+    margin: 0.55% auto;
+    border-radius: 0.5%;
+    box-shadow: rgba(0,0,0,0.16) 0px 1px 4px 2px;
+    padding:10px;
+}
+
+
+#logo{
+    margin:0 auto;
+    
+}
+
+
