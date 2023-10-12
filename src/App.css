@@ -42,7 +42,10 @@
   background-image: url(../public/careersynclogo.svg);
 } */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+:mera{
+  font-family: 'Oswald', sans-serif;
+}
 
 .body{
   background-color: rgb(246, 248, 254);
