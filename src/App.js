@@ -5,12 +5,23 @@ import Linemake from './first_page/Linemake.js';
 function App() {
   return (
     <div className='body'>
-      <div className='loginclass'>
-        <button id='loginbutton' src="">LOGIN</button>
-      </div>
-      <div className='logoclass1'>
-        <img id='logoelement1' src="/careersynclogo.svg" alt="CareerSync Logo" />
-      </div>
+
+      <nav className='first-big-box'>
+        <div className='logoclass1'>
+          <img id='logoelement1' src="/careersynclogo.svg" alt="CareerSync Logo" />
+          <div className='codemera'>CAREER SYNC</div>
+        </div>
+        <div className='loginclass'>
+          <button className='loginbutton' src='/'>Home</button>
+          <div className='widthbox'>|</div>
+          <button className='loginbutton' src='/'>Services</button>
+          <div className='widthbox'>|</div>
+          <button className='loginbutton' src='/'>About</button>
+          <button className='loginbutton' id='logbutton'>Login</button>
+        </div>
+      </nav>
+
+
       <Linemake thickness='90'/>
       <div className='gif-and-text'>
         <img src='/staffing.gif'></img>
