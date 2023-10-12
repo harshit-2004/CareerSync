@@ -1,6 +1,5 @@
-
 import React from 'react'
-import './Login.css'
+// import './Login.css'
 
 const data=[
     {
@@ -13,44 +12,47 @@ const data=[
 
 function Comp(props){
     return(
-       <div>
-          <input  type="text" placeholder={props.placeholder} id='comp'/> <br />
+       <div className='bg-white border-[#00000091] mt-5'>
+          <input  type="text" placeholder={props.placeholder} className='px-5 py-3 w-full'/> <br />
        </div>
     );
 }
 
 function Login() {
   return (
-      <div id='main'>
-           
-           <div id='box'>
+      <div className='flex '>
+           <div className='m-9 p-10'>
                <img alt='' src="/ezgif.gif" ></img>
-               <div id='box1'>
-                  <h1>Discover the Advantages</h1>
-                  <h3>►Hassle Free Placement</h3>
-                  <h3>►Easy Profile Management</h3>
-                  <h3>►Resume Builder Template</h3>
-                  <h3>►Stay Updated with all the Latest Info</h3>
+               <div className='flex flex-col ml-20'>
+                  <div className='text-3xl mb-5'>Discover the Advantages:</div>
+                  <div className='inline-flex'><img src='/image13.png'/> Hassle Free Placement</div>
+                  <div className='inline-flex'><img src='/image13.png'/> Easy Profile Manag</div>
+                  <div className='inline-flex'><img src='/image13.png'/> Resume Builder Template</div>
+                  <div className='inline-flex'><img src='/image13.png'/> Stay Updated with all the Latest Info</div>
                </div>
           </div>
-          
 
-          <div id='login'>
-                <div id='left'>
-                   <img id='logo' src="/careersynclogo.svg" alt="CareerSync Logo" />
-                   <h1>CAREER SYNC</h1>
-                   <h1 id='head'>Unlock Your Future</h1>
-                   <h4 id='faint'>Enter your University Credentials </h4>
+          <div className='flex border-l-4 p-20 flex-col bg-[#F6F8FE]'>
+                <div className='flex flex-col'>
+                    <div className='flex mt-10 justify-start items-center'>
+                        <img className='w-60 h-60 ' src="/careersynclogo.svg" alt="CareerSync Logo" />
+                        <p className='text-6xl flex justify-center relative right-5 py-3'>CAREERSYNC</p>
+                    </div>
+                   <div className='text-6xl mb-2'>Unlock Your Future</div>
+                   <div className='text-1xl text-[#959595]'>Enter your University Credentials </div>
                 </div>
-               <Comp
-                 placeholder="Email"
-                />
+
+               <Comp placeholder="Email"/>
                
                <Comp
                  placeholder="Password"
                 />
-                <h5>Forgot Password ?</h5>
-               <button id='btn'>I'm Ready</button>
+                <div className='text-end mt-5'>
+                    <button>
+                        Forgot Password ?
+                    </button>
+                    </div>
+               <button className='text-3xl text-center my-10 py-5 px-10 bg-black text-white'>I'm Ready</button>
            </div>
 
           

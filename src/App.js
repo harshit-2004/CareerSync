@@ -8,8 +8,9 @@ function App() {
   const [login, setLogin] = useState(true);
 
   return (
-    login ? <AppPage setLogin={setLogin}/> : 
-      <Login />
+    // login ? <AppPage setLogin={setLogin}/> : 
+    //   <Login />
+    <Login />
   );
 }
 
