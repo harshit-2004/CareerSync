@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 // import './Login.css'
 
 const data=[
@@ -19,6 +20,8 @@ function Comp(props){
 }
 
 function Login() {
+    const navigate = useNavigate();
+
   return (
       <div className='flex '>
            <div className='m-9 p-10'>
@@ -52,7 +55,11 @@ function Login() {
                         Forgot Password ?
                     </button>
                     </div>
-               <button className='text-3xl text-center my-10 py-5 px-10 bg-black text-white'>I'm Ready</button>
+               <button className='text-3xl text-center my-10 py-5 px-10 bg-black text-white' onClick={() => {
+                setTimeout(() => {
+                    navigate('/student-portal')
+                }, (2000));
+               }}>I'm Ready</button>
            </div>
 
 

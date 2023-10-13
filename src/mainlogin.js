@@ -1,5 +1,6 @@
 import React from 'react'
 import './mainlogin.css'
+import { useNavigate } from 'react-router-dom';
 
 const data=[
     {
@@ -17,10 +18,12 @@ const data=[
 ];
 
 function Comp(props){
+    const navigate = useNavigate();
+
   return(
-     <div className='box-container'>
+     <div onClick={() => navigate('/login')} className='box-container'>
          <button className='b'>
-           <img src={props.image} alt="" /> 
+           <img src={props.image} alt="" />
            <h2>{props.name}</h2>
          </button>
      </div>

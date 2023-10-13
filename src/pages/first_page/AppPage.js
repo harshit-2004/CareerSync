@@ -2,7 +2,11 @@ import React from 'react';
 import '../../App.css';
 import Linemake from './Linemake.js';
 
+import {useNavigate} from 'react-router-dom'
+
 function AppPage({setLogin}) {
+  const navigate = useNavigate();
+
   return (
     <div className='body'>
       <nav className='first-big-box'>
@@ -16,7 +20,7 @@ function AppPage({setLogin}) {
           <button className='loginbutton' src='/'>Services</button>
           <div className='widthbox'>|</div>
           <button className='loginbutton' src='/'>About</button>
-          <button className='loginbutton' id='logbutton' onClick={() => setLogin(false)} >Login</button>
+          <button className='loginbutton' id='logbutton' onClick={() => navigate('/main-login')} >Login</button>
         </div>
       </nav>
       <Linemake thickness='90'/>
