@@ -55,7 +55,7 @@ function Login() {
                <button className='text-3xl text-center my-10 py-5 px-10 bg-black text-white'>I'm Ready</button>
            </div>
 
-          
+
       </div>
   );
 }

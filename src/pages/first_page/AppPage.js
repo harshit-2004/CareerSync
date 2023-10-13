@@ -19,8 +19,6 @@ function AppPage({setLogin}) {
           <button className='loginbutton' id='logbutton' onClick={() => setLogin(false)} >Login</button>
         </div>
       </nav>
-
-
       <Linemake thickness='90'/>
       <div className='gif-and-text'>
         <img src='/staffing.gif'></img>
