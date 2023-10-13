@@ -42,41 +42,65 @@
   background-image: url(../public/careersynclogo.svg);
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+:mera{
+  font-family: 'Oswald', sans-serif;
+}
+
+.body{
+  background-color: rgb(246, 248, 254);
+}
+
 #logoelement1{
-  width: 434px;
-  height: 300px;
+  width: 100px;
+  height: 120px;
+  margin: 0px 0px 0px 5px;
 }
 
-.logoclass1{
-  position: relative;
+.first-big-box{
   display: flex;
-  margin: auto;
-  margin-bottom: -20px;
-  justify-content: center;
   align-items: center;
-  /* background-color: red; */
+  justify-content: space-between;
 }
 
-#loginbutton{
-  margin-top: 20px;
-  margin-right: 20px;
-  background-color: #9EC8FF;
-  width: 150px;
-  height: 60px;
-  border-radius: 15px;
-  border-color: #9EC8FF;
+.codemera{
+  margin-left: -10px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.widthbox{
   font-size: 2rem;
 }
 
+.logoclass1{
+  display: inline-flex;
+  align-items: center;
+}
+
+.loginbutton{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgb(246, 248, 254);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+#logbutton{
+  background-color: black;
+  color: white;
+  padding: 10px 20px 10px 20px;
+}
+
 .loginclass{
-  flex-direction: row-reverse;
-  position: absolute;
-  display: flex;
-  width: 100%;
-  /* background-color: green; */
+  display: inline-flex;
 }
 
 .gif-and-text{
+  margin: 70px 0px 70px 0px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -94,16 +118,16 @@
 
 #line2making{
   /* background-color: red; */
-  margin-top: -47px;
+  margin-top: -120px;
   margin-left: 43%;
   border-left: 1px solid black;
-  height: 47px;
+  height: 120px;
 }
 
 #line3making{
   margin-left: 30%;
   border-left: 1px solid black;
-  height: 100px;
+  height: 140px;
 }
 
 .bigbox{
@@ -175,15 +199,16 @@
 }
 
 .bigtext{
-  font-size: 5rem;
+  font-size: 6rem;
   display: flex;
   justify-content: center;
-  margin: 100px 0px 100px 0px;
+  margin: 150px 0px 150px 0px;
 }
 
 .textend2{
   font-size: 2rem;
   display: flex;
   justify-content: center;
-  margin: 50px 0px 50px 0px;
+  margin: 200px 0px 0px 0px;
+  padding-bottom: 50px;
 }
