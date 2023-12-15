@@ -8,7 +8,7 @@ const { connect, set } = require("mongoose");
 
 const path = require("path");
 
-const db = require("./config/mongoose");
+const db = require('./config/mongoose');
 
 const passport = require("passport");
 
