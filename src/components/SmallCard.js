@@ -20,7 +20,7 @@ function SmallCard(props) {
 
         <div className='flex-1 flex flex-col pl-6 justify-center'>
             <div className='text-3xl font-bold items-baseline gap-2 flex flex-row whitespace-nowrap'>
-            {props.percentage}%
+            {props.percentage}
             {
               props.subText && <p className='text-sm'>{props.subText}</p>
             }
