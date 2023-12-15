@@ -27,7 +27,7 @@ function Comp(props){
         <div onClick={() => navigate('/login')} className='box-container'>
             <button class="w-120 h-80 ">
                 <img class="w-60 h-60" src={props.image} alt="" />
-                <h2 >{props.name}</h2>
+                <h2 class="font-bold text-lg">{props.name}</h2>
             </button>
         </div>
     )
@@ -36,11 +36,9 @@ function Comp(props){
 function Mainlogin() {
     return (
         <div className='box'>
-            <div className='compo'>
                 {data.map((a) => (
                     <Comp key={a.id} name={a.name} image={a.image} />
                 ))}
-            </div>
         </div>
     )
 }
