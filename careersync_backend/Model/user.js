@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    placement:{
+        type:String,
+    },
+    internship:{
+        type:String,
+    }
   },
   {
     timestamps: true,

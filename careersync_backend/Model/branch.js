@@ -9,7 +9,10 @@ const branchModel = mongoose.Schema({
     type: String,
     required: true,
   },
+},
+{
+  timestamps: true,
 });
 
-const Branch = mongoose.Model("Branch", branchModel);
+const Branch = mongoose.model("Branch", branchModel);
 module.exports = Branch;

@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../model/user');
 
 const fs = require('fs');
 
@@ -13,12 +13,6 @@ module.exports.signin = function(req,res){
     });
 }
 
-module.exports.signup = function(req,res){
-    return res.render('signup',{
-        title:"From User controler"
-    });
-}
-
 module.exports.signout= function(req,res){
     console.log("logged out successfully");
     req.logout(function(err){
@@ -29,26 +23,6 @@ module.exports.signout= function(req,res){
         req.flash('success','Logged out Successfully');
         return res.redirect('/');
       });
-}
-
-module.exports.createSession = function(req,res){
-    req.flash('success','Logged in Successfully');
-    return res.redirect('/');
-}
-
-module.exports.create = async function(req,res){
-    try{
-        const user = await User.findOne({email:req.body.email});
-        if(user){
-            console.log("user allready exist please sign in ");
-            return res.redirect('back');
-        }else{
-            let newuser = await User.create(req.body);
-            return res.redirect('/users/signin');
-        }
-    }catch(err){
-        console.log("Error in creating User ",err);
-    }
 }
 
 module.exports.profile = function(req,res){

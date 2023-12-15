@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const router = express.Router(app);
 
 const Mongostore = require("connect-mongo");
 
@@ -16,7 +15,7 @@ const MongoStore = require("connect-mongo");
 
 const port = "8000";
 
-router.use('/', require("routes"));
+app.use('/', require("./routes"));
 
 app.listen(port, function (err) {
   if (err) {

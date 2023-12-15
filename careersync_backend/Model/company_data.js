@@ -28,7 +28,10 @@ const companySchema = mongoose.Schema({
   email: {
     type: String,
   },
+},
+{
+  timestamps: true,
 });
 
-const Company = mongoose.Model("Company", companySchema);
+const Company = mongoose.model("Company", companySchema);
 module.exports = Company;

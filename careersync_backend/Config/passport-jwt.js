@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = require('../Model/user');
+const User = require('../model/user');
 
 const config = require('./config');
 
@@ -18,7 +18,6 @@ passport.use(new JwtStrategy(opts, async function(jwt_payload, done) {
                 return done(null, user);
             } else {
                 return done(null, false);
-                // or you could create a new account
             }
     }catch(err){
         console.log("Error in finding user for jwt ", err);
