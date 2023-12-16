@@ -6,11 +6,12 @@ module.exports = {
       fontFamily: {
         oswald: "Oswald",
         libre: "Libre Baskerville",
-        bebas:'Bebas Neue',
-        inter:'Inter',
-        playfair:'Playfair Display',
-        quick:'Quicksand',
-        playFair: 'Playfair Display'
+        bebas: "Bebas Neue",
+        inter: "Inter",
+        playfair: "Playfair Display",
+        quick: "Quicksand",
+        playFair: "Playfair Display",
+        robot: "Roboto",
       },
     },
   },
