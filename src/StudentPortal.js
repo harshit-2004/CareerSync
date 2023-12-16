@@ -1,11 +1,19 @@
 import React from "react";
 import SmallCard from "./components/SmallCard";
 import "./StudentPortal.css";
+import {
+  VictoryBar,
+  VictoryPie,
+  VictorySharedEvents,
+  VictoryLabel,
+} from "victory";
 
 import { BsMicrosoft } from "react-icons/bs";
 import { RiNetflixFill } from "react-icons/ri";
 import { AiFillAmazonCircle, AiFillGoogleCircle } from "react-icons/ai";
+
 import SideDrawer from "./SideDrawer";
+
 
 const InfoCards = () => {
   return (
@@ -44,9 +52,11 @@ const InfoCards = () => {
 
 const FeatureCard = (props) => {
   return (
+
     <div className="h-96 aspect-square bg-[#F6F8FE] rounded-lg px-4 flex flex-col">
       <div className="flex flex-row justify-between items-center pt-12 h-20">
         <h1>Upcoming Opportunities</h1>
+
         <span className="bg-[#E8EDFD] px-2 py-1 rounded-xl">
           {props.oncampus ? "Oncampus" : "Offcampus"}
         </span>
@@ -86,6 +96,7 @@ const FeatureCard = (props) => {
 
 function StudentPortal() {
   return (
+<<<<<<< HEAD
     <>
       <div className="flex flex-row justify-between px-10">
         <div
@@ -108,13 +119,99 @@ function StudentPortal() {
             <h className="text-5xl font-bold ">Overview</h1>
             <InfoCards />
         </div> */}
-        </div>
+=======
 
-        <div className="inline-block space-y-8 border-l-2 border-l-black pl-10">
-          <h1 className="text-5xl font-bold">Opportunities</h1>
-          <FeatureCard oncampus />
-          <FeatureCard offcampus />
+    <div className="flex flex-row justify-between px-10">
+      <div className="app" style={{ position: "relative" , backgroundColor : 'white', zIndex : '100'}}>
+        <SideDrawer />
+      </div>
+      <div className="flex flex-col pt-20">
+        <div className="flex flex-col pt-10">
+          <h1 className="text-5xl font-bold ">Overview</h1>
+          <InfoCards />
+>>>>>>> 8911381260fb3112dc871f7d25726b902188b6cc
         </div>
+        <div className="flex flex-col pt-20">
+          <h1 className="text-5xl font-bold ">Analytics</h1>
+          <svg viewBox="0 0 450 350">
+            <VictorySharedEvents
+              events={[
+                {
+                  childName: ["pie", "bar"],
+                  target: "data",
+                  eventHandlers: {
+                    onMouseOver: () => {
+                      return [
+                        {
+                          childName: ["pie", "bar"],
+                          mutation: (props) => {
+                            return {
+                              style: Object.assign({}, props.style, {
+                                fill: "tomato",
+                              }),
+                            };
+                          },
+                        },
+                      ];
+                    },
+                    onMouseOut: () => {
+                      return [
+                        {
+                          childName: ["pie", "bar"],
+                          mutation: () => {
+                            return null;
+                          },
+                        },
+                      ];
+                    },
+                  },
+                },
+              ]}
+            >
+              <g transform={"translate(150, 50)"}>
+                <VictoryBar
+                  name="bar"
+                  width={300}
+                  standalone={false}
+                  style={{
+                    data: { width: 20 },
+                    labels: { fontSize: 15 },
+                  }}
+                  data={[
+                    { x: "2019", y: 2 },
+                    { x: "2020", y: 3 },
+                    { x: "2021", y: 5 },
+                    { x: "2022", y: 4 },
+                  ]}
+                  labels={["2019", "2020", "2021", "2022"]}
+                  labelComponent={<VictoryLabel y={290} />}
+                />
+              </g>
+              <g transform={"translate(0, -75)"}>
+                <VictoryPie
+                  name="pie"
+                  width={250}
+                  standalone={false}
+                  style={{ labels: { fontSize: 15, padding: 10 } }}
+                  data={[
+                    { x: "2019", y: 1 },
+                    { x: "2020", y: 4 },
+                    { x: "2021", y: 5 },
+                    { x: "2022", y: 7 },
+                  ]}
+                />
+              </g>
+            </VictorySharedEvents>
+          </svg>
+        </div>
+        {/* <img src={require('./components/bar.png')} className="object-cover"/> */}
+      </div>
+
+      <div className="inline-block space-y-8 border-l-2 border-l-black pl-10">
+        <h1 className="text-5xl font-bold pt-20 mt-5 mb-5">Opportunities</h1>
+        <FeatureCard oncampus />
+        
+        <FeatureCard offcampus />
       </div>
     </>
   );
