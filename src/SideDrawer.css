@@ -1,0 +1,49 @@
+/* SideDrawer.css */
+
+.side-drawer {
+  width: 60px; /* Adjust as needed */
+  background-color: #f6f8fe;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+  height: "100%";
+  position: absolute;
+}
+
+.side-drawer.uncollapsed {
+  width: 300px; /* Adjust as needed */
+}
+
+.drawer-icon {
+  margin-bottom: 20px;
+}
+
+.drawer-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawer-option:hover {
+  background-color: #000000 ;
+}
+
+.expanded-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.expanded-option p {
+  margin: 5px 0;
+  font-size: 24px;
+}

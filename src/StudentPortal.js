@@ -12,6 +12,9 @@ import { BsMicrosoft } from "react-icons/bs";
 import { RiNetflixFill } from "react-icons/ri";
 import { AiFillAmazonCircle, AiFillGoogleCircle } from "react-icons/ai";
 
+import SideDrawer from "./SideDrawer";
+
+
 const InfoCards = () => {
   return (
     <div className="flex flex-row items-center justify-start pl-6 pt-6 gap-20">
@@ -49,9 +52,11 @@ const InfoCards = () => {
 
 const FeatureCard = (props) => {
   return (
-    <div className="h-96 aspect-square bg-[#F6F8FE] px-4 flex flex-col rounded-3xl">
+
+    <div className="h-96 aspect-square bg-[#F6F8FE] rounded-lg px-4 flex flex-col">
       <div className="flex flex-row justify-between items-center pt-12 h-20">
-        <h1 className="font-bold">Upcoming Opportunities</h1>
+        <h1>Upcoming Opportunities</h1>
+
         <span className="bg-[#E8EDFD] px-2 py-1 rounded-xl">
           {props.oncampus ? "Oncampus" : "Offcampus"}
         </span>
@@ -91,7 +96,11 @@ const FeatureCard = (props) => {
 
 function StudentPortal() {
   return (
+
     <div className="flex flex-row justify-between px-10">
+      <div className="app" style={{ position: "relative" , backgroundColor : 'white', zIndex : '100'}}>
+        <SideDrawer />
+      </div>
       <div className="flex flex-col pt-20">
         <div className="flex flex-col pt-10">
           <h1 className="text-5xl font-bold ">Overview</h1>
@@ -179,7 +188,7 @@ function StudentPortal() {
         
         <FeatureCard offcampus />
       </div>
-    </div>
+    </>
   );
 }
 

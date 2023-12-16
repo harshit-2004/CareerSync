@@ -65,7 +65,7 @@
 
 .codemera{
   margin-left: -10px;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 
@@ -81,7 +81,7 @@
 .loginbutton{
   margin-left: 20px;
   margin-right: 20px;
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: bold;
   background-color: rgb(246, 248, 254);
   border: none;
@@ -92,7 +92,7 @@
 #logbutton{
   background-color: black;
   color: white;
-  padding: 10px 20px 10px 20px;
+  padding: 0px 18px 0px 18px;
 }
 
 .loginclass{
