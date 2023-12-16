@@ -188,7 +188,7 @@ function StudentPortal() {
         
         <FeatureCard offcampus />
       </div>
-    </>
+      </div>
   );
 }
 
