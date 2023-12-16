@@ -88,9 +88,16 @@ function StudentPortal() {
   return (
     <>
       <div className="flex flex-row justify-between px-10">
-      <div className="app" style={{ position: "relative" , backgroundColor : 'white', zIndex : '100'}}>
-        <SideDrawer />
-      </div>
+        <div
+          className="app"
+          style={{
+            position: "relative",
+            backgroundColor: "white",
+            zIndex: "100",
+          }}
+        >
+          <SideDrawer />
+        </div>
         <div className="flex flex-col">
           <div className="flex flex-col">
             <h1 className="text-5xl font-bold ">Overview</h1>
