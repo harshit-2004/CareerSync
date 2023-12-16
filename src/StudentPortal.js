@@ -97,7 +97,7 @@ const FeatureCard = (props) => {
 function StudentPortal() {
   return (
 
-    <div className="flex flex-row justify-between px-10">
+    <div className="flex flex-row justify-between">
       <div className="app" style={{ position: "relative" , backgroundColor : 'white', zIndex : '100'}}>
         <SideDrawer />
       </div>

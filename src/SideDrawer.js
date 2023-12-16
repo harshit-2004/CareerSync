@@ -21,7 +21,7 @@ const SideDrawer = () => {
   return (
     <div
       className={`side-drawer ${collapsed ? "collapsed" : "uncollapsed"}`}
-      style={{ height: "100%", backgroundColor : 'white' }}
+      style={{ height: "100%" }}
     >
       <div className="drawer-icon" onClick={toggleDrawer}>
         <img src={require("./image.jpg")} className="object-cover" />
@@ -29,16 +29,18 @@ const SideDrawer = () => {
       <div
         style={{
           height: "100%",
+          width:'100%',
           display: "flex",
           flexDirection: "column",
-          backgroundColor:'white'
+          backgroundColor: "#f6f8fe",
         }}
       >
-        <div style={{ position: "relative", top: "20%", backgroundColor : 'white' }}>
+        <div className=" ml-2 mr-2" style={{ position: "relative", top: "10%"} }>
           <OptionCard
             optionImage={img1}
             optionLabel={"Home"}
             collapsed={collapsed}
+           
           />
           <OptionCard
             optionImage={img2}

@@ -2,15 +2,15 @@ import Option1 from "../assets/Option1.svg";
 const OptionsCard = ({ collapsed, optionImage, optionLabel }) => {
   return (
     <div
-      className="drawer-option"
+      className="drawer-option hover:bg-[#EBEBFC] bg-white shadow-[3px_3px_4px_-2px_rgba(0,0,0,0.1)] hover:shadow-[8px_8px_4px_-2px_rgba(0,0,0,0.1)]"
       style={{
         color: "black",
         display: "flex",
         marginBottom: 12,
         width: "100%",
         alignItems:'start',
-        padding:2,
-        borderRadius:80
+        padding:4,
+        borderRadius:4,
       }}
     >
       {collapsed ? (
@@ -23,8 +23,8 @@ const OptionsCard = ({ collapsed, optionImage, optionLabel }) => {
             flexDirection: "row",
           }}
         >
-          <img src={optionImage} style={{ justifySelf: "start" }} />
-          <span style={{ marginLeft: 8, fontSize: 28 }}>{optionLabel}</span>
+          <img src={optionImage} style={{ marginLeft:8 }} />
+          <span className= "font-oswald" style={{ marginLeft: 8, fontSize: 28 }}>{optionLabel}</span>
         </div>
       )}
     </div>

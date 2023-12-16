@@ -1,6 +1,7 @@
 /* SideDrawer.css */
 
 .side-drawer {
+  padding:6;
   width: 60px; /* Adjust as needed */
   background-color: #f6f8fe;
   color: #fff;
@@ -29,15 +30,13 @@
   transition: background-color 0.3s ease;
 }
 
-.drawer-option:hover {
-  background-color: #000000 ;
-}
 
 .expanded-option {
   display: flex;
   flex-direction: column;
   align-items: center;
   opacity: 1;
+  margin-left: 4;
   max-height: 200px;
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;
