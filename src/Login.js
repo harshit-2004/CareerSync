@@ -5,13 +5,17 @@ import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
-const URL = `https://random.dog/woof.json`;
+const URL = `http://localhost:8000/auth/google`;
 
 const getdata = async () => {
-  const response = await fetch(URL);
+  const response = await fetch(URL,{
+    method: "GET",
+  });
+
   console.log(response);
-  console.log("Hello");
+ console.log("Hello")
 };
+
 
 // import './Login.css'
 
@@ -39,13 +43,16 @@ function Comp(props) {
   );
 }
 
-function Login() {
-  const navigate = useNavigate();
-  const [error, setError] = useState(false);
+function EmailPasswordLogin(){
+    
+}
 
-  const onClickHandler = () => {
-    getdata();
-  };
+function Login() {
+    const navigate = useNavigate();
+    
+    const onClickHandler = () => {
+        getdata();
+    };
 
   return (
     <div className="flex ">
@@ -70,51 +77,22 @@ function Login() {
         </div>
       </div>
 
-      <div className="h-full flex w-3/5 border-l-2  p-10 flex-col bg-[#F6F8FE] rounded-lg border-black">
-        <div className="flex flex-col">
-          <div className="flex justify-start items-center">
-            <img
-              className="w-60 h-60 "
-              src="/careersynclogo.svg"
-              alt="CareerSync Logo"
-            />
-            <p className="text-6xl font-bebas flex justify-center relative right-5 py-3">
-              CAREERSYNC
-            </p>
-          </div>
-          <div className="text-6xl mb-2 font-playfair">Unlock Your Future</div>
-          <div className="text-1xl text-[#959595]">
-            Enter your University Credentials{" "}
-          </div>
-        </div>
-
-        <Comp
-          placeholder="Email"
-          Handlechange={(val) => {
-            if (!val.includes("@nitj.ac.in")) {
-              setError(true);
-            } else {
-              setError(false);
-            }
-            console.log(val);
-          }}
-          error={error}
-        />
-
-        <Comp placeholder="Password" error={false} Handlechange={() => {}} />
-        <div className="text-end mt-5 text-[#959595]">
-          <button>Forgot Password ?</button>
-        </div>
-        <button
-          className="text-3xl text-center font-oswald my-5 py-3 px-10 bg-black text-white"
-          onClick={() => {
-            setTimeout(() => {
-              navigate("/student-portal");
-            }, 2000);
-          }}
-        >
-          I'm Ready
-        </button>
+               <Comp placeholder="Email"/>
+               
+               <Comp
+                 placeholder="Password"
+                />
+                <div className='text-end mt-5'>
+                    <button>
+                        Forgot Password ?
+                    </button>
+                    
+                    </div>
+               <button className='text-3xl text-center my-5 py-3 px-10 bg-black text-white' onClick={() => {
+                setTimeout(() => {
+                    navigate('/student-portal')
+                }, (2000));
+               }}>I'm Ready</button>
 
         <button
           className="text-3xl text-center my-5 py-3 px-10 font-oswald bg-black text-white"
