@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-// import './Login.css'
+import './Login.css'
 
 import { useState, useEffect } from "react";
 
@@ -16,8 +16,6 @@ const getdata = async () => {
  console.log("Hello")
 };
 
-
-// import './Login.css'
 
 const data = [
   {
@@ -100,7 +98,7 @@ function Login() {
         >
           Join with Google
         </button>
-      </div>
+      {/* </div> */}
     </div>
     // <div className="flex-row">
     //   <div className="m-9 p-10">
