@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import AppPage from "./pages/first_page/AppPage";
-import StudentPortal from "./StudentPortal";
+import StudentPortal from "./pages/Student Portal/StudentPortal.js";
 import Login from "./Login";
 import Mainlogin from "./mainlogin.js";
 
