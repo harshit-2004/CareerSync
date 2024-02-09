@@ -7,6 +7,9 @@ import Mainlogin from "./mainlogin.js";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SideDrawer from "./SideDrawer.js";
+import About  from "./pages/first_page/About.js";
+import Service  from "./pages/first_page/Service.js";
+import SharedLayout from "./pages/first_page/SharedLayout.js";
 
 function App() {
   const [login, setLogin] = useState(true);
@@ -16,7 +19,11 @@ function App() {
      
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<AppPage />} />
+          <Route path={"/"} element={null} >
+            <Route index element={<AppPage/>}/>
+            <Route path={'/about'} element={<About/>}/>
+            <Route path={'/service'} element={<Service/>}/>
+          </Route>
           <Route path={"login"} element={<Login />} />
           <Route path={"main-login"} element={<Mainlogin />} />
           <Route path={"student-portal"} element={<StudentPortal />} />
