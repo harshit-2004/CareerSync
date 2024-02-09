@@ -11,6 +11,8 @@ const db = require('./config/mongoose');
 
 const passport = require("passport");
 
+const cors=require("cors");
+
 const passportLocal = require("./config/passport-local-strategy");
 
 const passport_jwt = require("./config/passport-jwt");
@@ -22,6 +24,14 @@ const MongoStore = require("connect-mongo");
 app.use(passport.initialize());
 
 const port = "8000";
+
+const corsOptions = {
+  origin: 'http://localhost:3000', 
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions)) 
 
 app.use('/', require("./routes"));
 

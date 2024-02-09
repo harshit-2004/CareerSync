@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 const URL = `http://localhost:8000/auth/google`;
 
 const getdata = async () => {
+  console.log('ehlo');
   try {
     const response = await fetch(URL, {
       method: "GET",
