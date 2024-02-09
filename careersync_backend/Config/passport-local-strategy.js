@@ -2,7 +2,7 @@ const passport = require('passport');
 
 const LocalStrategy = require('passport-local').Strategy;
 
-const User = require('../Model/user');
+const User = require('../model/user');
 
 passport.use(new LocalStrategy({
     usernameField:'email'
@@ -40,7 +40,7 @@ passport.checkAuthentication = function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }else{
-        return res.redirect('/users/signin');
+        return res.redirect('/');
     }
 }
 

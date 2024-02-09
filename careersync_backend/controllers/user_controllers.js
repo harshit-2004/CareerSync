@@ -7,7 +7,6 @@ const path = require('path');
 const { log } = require('console');
 
 module.exports.signin = function(req,res){
-    req.flash('success','Sign In Successfully');
     return res.render('signin',{
         title:"From User controler"
     });
@@ -20,7 +19,6 @@ module.exports.signout= function(req,res){
             console.log("error in making value ",err);
             return next(err);
         }
-        req.flash('success','Logged out Successfully');
         return res.redirect('/');
       });
 }
@@ -49,11 +47,9 @@ module.exports.profile_update = async function(req,res){
                 message:"Porfile Updated Successfully"
             });
         }
-        req.flash('success', 'Profile Updated Successfully');
         return res.redirect('back');
       } catch (error) {
         console.error(error);
-        req.flash('error', 'Error updating profile');
         return res.redirect('back');
       }
 }

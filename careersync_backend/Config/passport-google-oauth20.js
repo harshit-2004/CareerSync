@@ -3,6 +3,7 @@ const passport = require('passport');
 const config = require('./config.js');
 
 const cryptojs = require('crypto-js');
+const User = require('../model/user.js');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -10,7 +11,8 @@ passport.use(new GoogleStrategy({
     clientID: config.google_client_id,
     clientSecret: config.google_clientSecret,
     callbackURL:config.google_callbackUrl
-  },async function(accessToken, refreshToken, profile, cb) {
+  },async function(accessToken, refreshToken, profile , cb) {
+    console.log(profile);
     let user = await User.findOne({ email: profile.emails[0].value });
     if (!user) {
         user = await User.create({
