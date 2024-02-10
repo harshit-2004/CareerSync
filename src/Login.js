@@ -1,30 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
+import axios  from "axios";
 import "./Login.css";
 
 import { useState, useEffect } from "react";
-
-const URL = `http://localhost:8000/auth/google`;
-
-const getdata = async () => {
-  console.log('ehlo');
-  try {
-    const response = await fetch(URL, {
-      method: "GET",
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const responsedata = await response.json();
-    console.log(responsedata);
-    console.log("Hello");
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
 
 const data = [
   {
@@ -50,15 +28,24 @@ function Comp(props) {
   );
 }
 
-function EmailPasswordLogin() {}
-
 function Login() {
-  const [error, setError] = useState(false);
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
-  const onClickHandler = () => {
-    getdata();
-  };
+  const [error, setError] = useState(false);
+
+  const ClickHandler2 = async () => {
+    console.log('ehlo', email, password);
+    try {
+        const res = await axios.post("http://localhost:8000/login", {email,password}, {
+          withCredentials : true,
+        });
+        console.log("response" , res);
+
+    } catch (err) {
+        console.error("Error:", err);
+    }
+};
 
   return (
     <div className="flex">
@@ -107,30 +94,26 @@ function Login() {
           <Comp
             placeholder="Email"
             Handlechange={(val) => {
+              setEmail(val)
               if (!val.includes("@nitj.ac.in")) {
                 setError(true);
               } else {
                 setError(false);
               }
-              console.log(val);
             }}
             error={error}
           />
 
-          <Comp placeholder="Password" error={false} Handlechange={() => {}} />
+          <Comp placeholder="Password" error={false} Handlechange = {(val)=>{setPassword(val)}}/>
           <div className="text-end mt-5">
             <button className="text-[#959595]">Forgot Password ?</button>
           </div>
-          <button className="text-3xl font-oswald text-center mt-5 py-4 px-10 bg-black text-white" onClick={() => {
-              setTimeout(() => {
-                navigate("/student-portal");
-              }, 2000);
-            }}>
+          <button className="text-3xl font-oswald text-center mt-5 py-4 px-10 bg-black text-white" onClick={ClickHandler2} >
             I'm Ready
           </button>
 
-          <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white" onClick={onClickHandler}>
-            Sign with Google
+          <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
+            <a href="http://localhost:8000/auth/google">Sign with Google</a>
           </button>
         </div>
        </div>

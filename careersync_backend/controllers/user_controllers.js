@@ -4,13 +4,22 @@ const fs = require('fs');
 
 const path = require('path');
 
-const { log } = require('console');
+// module.exports.login = (req, res) => {
+//     console.log("hit", req.body);
+//     if(req.isAuthenticated())
+//     {
+//       return res.redirect("http://localhost:3000/student-portal", {
+//         status:200
+//       });
+//     }
+//     return res.redirect("http://localhost:3000/main-login", {
+//       status:200
+//     });
+// }
 
-module.exports.signin = function(req,res){
-    return res.render('signin',{
-        title:"From User controler"
-    });
-}
+module.exports.createSession = function(req, res){
+    return res.redirect("http://localhost:3000/student-portal");
+  }
 
 module.exports.signout= function(req,res){
     console.log("logged out successfully");
