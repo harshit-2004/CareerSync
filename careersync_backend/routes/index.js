@@ -10,11 +10,15 @@ const userController = require("../controllers/user_controllers")
 
 router.get('/auth/google',passport.authenticate('google', { session: false ,scope:['profile','email'] }));
 
-router.get('/auth/google/callback',passport.authenticate('google',{session:false,successRedirect:'/',failureRedirect:'/login'}));
+router.get('/auth/google/callback',passport.authenticate('google', {failureRedirect: "http://localhost:3000/login",failureMessage:true}),userController.createSession);
 
 // const email_data_controller = require('../controllers/user_controllers');
+// router.get('/login', () => {})
+router.post('/login',passport.authenticate('local', {failureRedirect: "http://localhost:3000/login",failureMessage:true}), userController.createSession);
 
 const company_data_controller = require("../controllers/companyDataController");
+
+router.use('/student_portal',require('./student_portal'));
 
 router.post('/company_data', company_data_controller)
 
