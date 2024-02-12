@@ -33,7 +33,6 @@ module.exports.overview = function(req, res) {
             res.status(200).json({ data : overviews });
         })
         .catch(err => {
-            // Handle error
             console.error(err);
             res.status(500).json({ error: 'Internal server error' });
         });

@@ -40,57 +40,51 @@ function App() {
   //     ]
   //   },
   // ]);
+  {/* <BrowserRouter>
+    <Routes>
+      <Route path={"/"} element={null}>
+        <Route index element={<AppPage />} />
+        <Route path={"/about"} element={<About />} />
+        <Route path={"/service"} element={<Service />} />
+      </Route>
+      <Route path={"login"} element={<Login />} />
+      <Route path={"main-login"} element={<Mainlogin />} />
+      <Route path={"student-portal"} element={<StudentPortal />} />
+      <Route path={"/student-portal"}>
+        <Route index path="/student-portal" element={<StudentPortal />} />
+        <Route path={"/student-portal/application"} element={<Table />} />
+        <Route
+          path={"/student-portal/notification"}
+          element={<Notification />}
+        />
+        <Route path={"/student-portal/profile"} element={null} />
+        <Route path={"/student-portal/logout"} element={null} />
+        <Route path={"/student-portal/resume-builder"} element={null} />
+      </Route>
+    </Routes>
+  </BrowserRouter> */}
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={null}>
+      <Route path="/">
         <Route index element={<AppPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/service" element={<Service />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main-login" element={<Mainlogin />} />
-        <Route
-          path="/student-portal"
-          element={<StudentPortal />}
-          loader={infocardloader}
-        >
-
+        <Route path="/student-portal">
+          <Route index element={<StudentPortal />} loader={infocardloader} />
+          <Route path="notification" element={<Notification />} /> {/* Relative path */}
+          <Route path="profile" element={null} /> {/* Relative path */}
+          <Route path="logout" element={null} /> {/* Relative path */}
+          <Route path="resume-builder" element={null} /> {/* Relative path */}
+          <Route path="application" element={<Table />} /> {/* Relative path */}
         </Route>
-          <Route path={"/student-portal/notification"}
-          element={<Notification />}
-          />
-          <Route path={"/student-portal/profile"} element={null} />
-          <Route path={"/student-portal/logout"} element={null} />
-          <Route path={"/student-portal/resume-builder"} element={null} />
-          <Route path="/student-portal/application" element={<Table />} />
       </Route>
     )
   );
 
   return (
     <>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path={"/"} element={null}>
-            <Route index element={<AppPage />} />
-            <Route path={"/about"} element={<About />} />
-            <Route path={"/service"} element={<Service />} />
-          </Route>
-          <Route path={"login"} element={<Login />} />
-          <Route path={"main-login"} element={<Mainlogin />} />
-          <Route path={"student-portal"} element={<StudentPortal />} />
-          <Route path={"/student-portal"}>
-            <Route index path="/student-portal" element={<StudentPortal />} />
-            <Route path={"/student-portal/application"} element={<Table />} />
-            <Route
-              path={"/student-portal/notification"}
-              element={<Notification />}
-            />
-            <Route path={"/student-portal/profile"} element={null} />
-            <Route path={"/student-portal/logout"} element={null} />
-            <Route path={"/student-portal/resume-builder"} element={null} />
-          </Route>
-        </Routes>
-      </BrowserRouter> */}
       <RouterProvider router={router} />
     </>
   );
