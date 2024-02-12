@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import AppPage from "./pages/first_page/AppPage";
-import StudentPortal from "./pages/Student Portal/StudentPortal.js";
-import {loader as infocardloader} from "./pages/Student Portal/InfoCards.js";
+import StudentPortal , {loader as infocardloader} from "./pages/Student Portal/StudentPortal.js";
 import Login from "./Login";
 import Mainlogin from "./mainlogin.js";
 

@@ -4,8 +4,11 @@ import VictoryCard from "./VictoryCard.js";
 import InfoCards from "./InfoCards.js";
 import FeatureCard from "./FeathuredCard.js";
 import SideDrawer from "../../SideDrawer";
+import {useLoaderData} from "react-router-dom";
+import axios from "axios";
 
 function StudentPortal() {
+  const fuck = useLoaderData();
   return (
 
     <div className="flex flex-row justify-between">
@@ -15,7 +18,7 @@ function StudentPortal() {
       <div className="flex flex-col pt-20">
         <div className="flex flex-col pt-10">
           <h1 className="text-5xl font-bold ">Overview</h1>
-            <InfoCards />
+            <InfoCards data={fuck.data[0]} />
         </div>
         <div className="flex flex-col pt-20">
           <h1 className="text-5xl font-bold ">Analytics</h1>
@@ -36,3 +39,13 @@ function StudentPortal() {
 }
 
 export default StudentPortal;
+
+export async function loader(){
+  try {
+      const response = await axios.get("http://localhost:8000/student_portal/overview");
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; 
+  }
+}

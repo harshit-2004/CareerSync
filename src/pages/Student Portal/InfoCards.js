@@ -1,11 +1,7 @@
 import SmallCard from "../../components/SmallCard";
-import {useLoaderData} from "react-router-dom";
-import axios from "axios";
 
-function InfoCards(){
-    const fuck = useLoaderData();
-    const det = fuck.data[0];
-    console.log("showing the data ",det);
+function InfoCards({...data}){
+    const det = data.data;
     return (
         <div className="flex flex-row items-center justify-start pl-6 pt-6 gap-20">
             <SmallCard
@@ -41,13 +37,3 @@ function InfoCards(){
 };
 
 export default InfoCards;
-
-export async function loader(){
-    try {
-        const response = await axios.get("http://localhost:8000/student_portal/overview");
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error; 
-    }
-  }
