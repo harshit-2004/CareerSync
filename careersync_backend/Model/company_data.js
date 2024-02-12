@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Link } = require("react-router-dom");
+const { link } = require("../routes");
 
 const companySchema = mongoose.Schema({
   companyName: {
@@ -9,6 +11,17 @@ const companySchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  info:{
+    type:String,
+  },
+  type:{
+    type:String,
+    required:true,
+  },
+  oncampuss:{
+    type:Boolean,
+    required:true
+  },
   package: {
     type: String,
     required: true,
@@ -18,9 +31,10 @@ const companySchema = mongoose.Schema({
       type: Number,
     },
   ],
-  month: {
-    type: String,
-  },
+  last_date:{
+    type : Date
+  }
+  ,
   branch: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "branch",
@@ -28,6 +42,9 @@ const companySchema = mongoose.Schema({
   email: {
     type: String,
   },
+  apply_link:{
+    type:String
+  }
 },
 {
   timestamps: true,

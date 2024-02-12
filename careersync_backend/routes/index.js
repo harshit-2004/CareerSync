@@ -3,8 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 const branch = require('../model/branch');
-
-const company_data = require('../model/company_data');
 const passport = require("passport")
 const userController = require("../controllers/user_controllers")
 
@@ -20,6 +18,8 @@ const company_data_controller = require("../controllers/companyDataController");
 
 router.use('/student_portal',require('./student_portal'));
 
-router.post('/company_data', company_data_controller)
+router.post('/company_data/add_company', company_data_controller.addCompanyData);
+
+router.get('/company_data/oncampuss',company_data_controller.oncampusscampanies)
 
 module.exports = router;
