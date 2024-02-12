@@ -18,6 +18,8 @@ router.post('/login',passport.authenticate('local', {failureRedirect: "http://lo
 
 const company_data_controller = require("../controllers/companyDataController");
 
+router.use('/student_portal',require('./student_portal'));
+
 router.post('/company_data', company_data_controller)
 
 module.exports = router;
