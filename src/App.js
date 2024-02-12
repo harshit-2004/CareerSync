@@ -5,7 +5,7 @@ import StudentPortal , {loader as infocardloader} from "./pages/Student Portal/S
 import Login from "./Login";
 import Mainlogin from "./mainlogin.js";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes,RouterProvider,Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import SideDrawer from "./SideDrawer.js";
 import About from "./pages/first_page/About.js";
 import Service from "./pages/first_page/Service.js";
@@ -48,18 +48,26 @@ function App() {
         <Route path="/service" element={<Service />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main-login" element={<Mainlogin />} />
-        <Route 
-          path="/student-portal" 
-          element={<StudentPortal />} 
+        <Route
+          path="/student-portal"
+          element={<StudentPortal />}
           loader={infocardloader}
+        >
+        </Route>
+        <Route path={"/student-portal/notification"}
+        element={<Notification />}
         />
+        <Route path={"/student-portal/profile"} element={null} />
+        <Route path={"/student-portal/logout"} element={null} />
+        <Route path={"/student-portal/resume-builder"} element={null} />
+        <Route path="/student-portal/application" element={<Table />} />
       </Route>
     )
   );
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path={"/"} element={null}>
             <Route index element={<AppPage />} />
@@ -68,7 +76,7 @@ function App() {
           </Route>
           <Route path={"login"} element={<Login />} />
           <Route path={"main-login"} element={<Mainlogin />} />
-          {/* <Route path={"student-portal"} element={<StudentPortal />} /> */}
+          <Route path={"student-portal"} element={<StudentPortal />} />
           <Route path={"/student-portal"}>
             <Route index path="/student-portal" element={<StudentPortal />} />
             <Route path={"/student-portal/application"} element={<Table />} />
@@ -81,7 +89,8 @@ function App() {
             <Route path={"/student-portal/resume-builder"} element={null} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <RouterProvider router={router} />
     </>
   );
 }
