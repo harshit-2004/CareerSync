@@ -53,14 +53,15 @@ function App() {
           element={<StudentPortal />}
           loader={infocardloader}
         >
+
         </Route>
-        <Route path={"/student-portal/notification"}
-        element={<Notification />}
-        />
-        <Route path={"/student-portal/profile"} element={null} />
-        <Route path={"/student-portal/logout"} element={null} />
-        <Route path={"/student-portal/resume-builder"} element={null} />
-        <Route path="/student-portal/application" element={<Table />} />
+          <Route path={"/student-portal/notification"}
+          element={<Notification />}
+          />
+          <Route path={"/student-portal/profile"} element={null} />
+          <Route path={"/student-portal/logout"} element={null} />
+          <Route path={"/student-portal/resume-builder"} element={null} />
+          <Route path="/student-portal/application" element={<Table />} />
       </Route>
     )
   );
