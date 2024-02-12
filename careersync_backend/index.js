@@ -12,9 +12,6 @@ const db = require('./config/mongoose');
 const passport = require("passport");
 
 const routes = require('./routes');
-
-const cors=require("cors");
-
 const passportLocal = require("./config/passport-local-strategy");
 
 const passport_jwt = require("./config/passport-jwt");
@@ -25,17 +22,19 @@ const MongoStore = require("connect-mongo");
 
 const bodyParser = require("body-parser")
 
-const corsOptions = {
-  origin: 'http://localhost:3000', // 
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions)) ;
-
 app.use(bodyParser.urlencoded());
-
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Request-Method', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  console.log(req.headers)
+  console.log(res.header());
+  return next();
+})
+
 
 const session = require('express-session');
 

@@ -1,51 +1,11 @@
 import React from "react";
-import axios  from "axios";
 import "./Login.css";
 
 import { useState, useEffect } from "react";
 
-const data = [
-  {
-    placeholder: "Email",
-  },
-  {
-    placeholder: "Password",
-  },
-];
-
-function Comp(props) {
-  return (
-    <div className="bg-white border-[#00000091] mt-5">
-      <input
-        type="text"
-        placeholder={props.placeholder}
-        className="px-5 py-3 w-full"
-        onChange={(e) => props.Handlechange(e.target.value)}
-      />{" "}
-      <br />
-      {props.error ? <p style={{ color: "red" }}>Enter a Valid Email </p> : " "}
-    </div>
-  );
-}
-
 function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
 
   const [error, setError] = useState(false);
-
-  const ClickHandler2 = async () => {
-    console.log('ehlo', email, password);
-    try {
-        const res = await axios.post("http://localhost:8000/login", {email,password}, {
-          withCredentials : true,
-        });
-        console.log("response" , res);
-
-    } catch (err) {
-        console.error("Error:", err);
-    }
-};
 
   return (
     <div className="flex">
@@ -90,28 +50,16 @@ function Login() {
               Enter your University Credentials{" "}
             </div>
           </div>
-
-          <Comp
-            placeholder="Email"
-            Handlechange={(val) => {
-              setEmail(val)
-              if (!val.includes("@nitj.ac.in")) {
-                setError(true);
-              } else {
-                setError(false);
-              }
-            }}
-            error={error}
-          />
-
-          <Comp placeholder="Password" error={false} Handlechange = {(val)=>{setPassword(val)}}/>
-          <div className="text-end mt-5">
-            <button className="text-[#959595]">Forgot Password ?</button>
-          </div>
-          <button className="text-3xl font-oswald text-center mt-5 py-4 px-10 bg-black text-white" onClick={ClickHandler2} >
-            I'm Ready
-          </button>
-
+          <form action="http://localhost:8000/login" method="Post">
+            <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" />
+            <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" />
+            <div className="text-end mt-5">
+              <button className="text-[rgb(149,149,149)]">Forgot Password ?</button>
+            </div>
+            <button className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white" type="submit" >
+              I'm Ready
+            </button>
+          </form>
           <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
             <a href="http://localhost:8000/auth/google">Sign with Google</a>
           </button>

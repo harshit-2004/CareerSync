@@ -18,9 +18,8 @@ const path = require('path');
 // }
 
 module.exports.createSession = function(req, res){
-  console.log("hello inside create session logged in successfully");
-    return res.redirect("http://localhost:3000/student-portal/");
-  }
+    return res.redirect("http://localhost:3000/student-portal/")
+}
 
 module.exports.signout= function(req,res){
     console.log("logged out successfully");
