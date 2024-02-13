@@ -12,15 +12,17 @@ module.exports.addCompanyData = async (req, res) => {
     }
 }
 
-module.exports.oncampusscampanies = function(req,res){
-    // campuss,btechyear,branch,type:internship,placement,internship+placement
-        const data = CompanyData.find({oncampuss:req.body.campuss,
-                                        $year: { $search: req.body.year },
-                                        $branch: { $search: req.body.branch },
-                                        type:req.body.type
-                                    });
-        console.log(data);
-        return res.redirect('back',{
-            campanies_data:data
-        });
-}
+module.exports.oncampusscampanies = async function(req, res) {
+    // campuss, btechyear, branch, type: internship, placement, internship+placement
+    // console.log("showing the req.body", req.body);
+    const data = await CompanyData.find({
+        year: req.body.year,
+        oncampuss:req.body.oncampuss,
+        branch:req.body.branch,
+        type:req.body.type
+    });
+    console.log("showing the requested data ", data);
+    return res.json({
+        data 
+    });
+  }

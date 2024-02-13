@@ -60,9 +60,11 @@ function Login() {
               I'm Ready
             </button>
           </form>
-          <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
-            <a href="http://localhost:8000/auth/google">Sign with Google</a>
-          </button>
+            <a href="http://localhost:8000/auth/google" className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
+              <button >
+                Sign with Google
+              </button>
+            </a>
         </div>
        </div>
   );

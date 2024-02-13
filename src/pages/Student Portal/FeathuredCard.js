@@ -3,6 +3,8 @@ import { RiNetflixFill } from "react-icons/ri";
 import { AiFillAmazonCircle, AiFillGoogleCircle } from "react-icons/ai";
 
 const FeatureCard = (props) => {
+
+
     return (
   
       <div className="h-96 aspect-square bg-[#F6F8FE] rounded-lg px-4 flex flex-col">

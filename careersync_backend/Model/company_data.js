@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-const { Link } = require("react-router-dom");
-const { link } = require("../routes");
 
-const companySchema = mongoose.Schema({
+const companySchema = new mongoose.Schema({
   companyName: {
     type: String,
     required: true,
@@ -26,23 +24,24 @@ const companySchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  year: [
-    {
-      type: Number,
-    },
-  ],
+  year: [{type: String}],
   last_date:{
     type : Date
   }
   ,
-  branch: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "branch",
-  },
+  branch: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "branch",
+      }
+],
   email: {
     type: String,
   },
   apply_link:{
+    type:String
+  },
+  icon:{
     type:String
   }
 },

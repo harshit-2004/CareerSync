@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import SideDrawer from "../../SideDrawer";
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
@@ -19,6 +20,9 @@ const ProfileDropDown = (props) => {
   }, []);
 
   return (
+    <>
+    
+    
     <div className={`relative ${props.class}`}>
       <div className="flex items-center space-x-4">
         <button
@@ -54,6 +58,7 @@ const ProfileDropDown = (props) => {
         ))}
       </ul> */}
     </div>
+    </>
   );
 };
 
@@ -208,6 +213,9 @@ const Table = () => {
     ];
 
     return (
+      <>
+      <SideDrawer/>
+     
         <div className="max-w-screen-xl mx-auto px-4 md:px-8 mt-9">
             <div className="items-start justify-between md:flex">
                 <div className="max-w-lg">
@@ -268,6 +276,7 @@ const Table = () => {
                 </table>
             </div>
         </div>
+        </>
     )
 }
 

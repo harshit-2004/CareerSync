@@ -40,7 +40,7 @@ const SideDrawer = () => {
           className=" ml-2 mr-2"
           style={{ position: "relative", top: "10%" }}
         >
-          <Link to="/" className="loginbutton font-inter font-bold">
+          <Link to="/student-portal" className="font-inter font-bold">
             <OptionCard
               optionImage={img1}
               optionLabel={"Home"}
