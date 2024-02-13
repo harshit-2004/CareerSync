@@ -22,7 +22,6 @@ const data=[
 
 function Comp(props){
     const navigate = useNavigate();
-
     return (
         <div onClick={() => navigate('/login')} className='box-container'>
             <button class="w-120 h-80 ">

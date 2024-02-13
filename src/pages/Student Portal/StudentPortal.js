@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./StudentPortal.css";
 import VictoryCard from "./VictoryCard.js";
 import InfoCards from "./InfoCards.js";
@@ -7,7 +7,24 @@ import SideDrawer from "../../SideDrawer";
 import {useLoaderData} from "react-router-dom";
 import axios from "axios";
 
+
 function StudentPortal() {
+  const [campusdata, setCampusdata] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const rp = await axios.get("http://localhost:8000/company_data/oncampuss");
+        console.log("inside useEffect function", rp.data,"hello ");
+        setCampusdata(rp.data); // Assuming you want to set the data from the response
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData(); // Immediately invoke the async function
+  }, []); // Empty dependency array means this effect runs only once, like componentDidMount
+
   const fuck = useLoaderData();
   return (
 
@@ -26,13 +43,12 @@ function StudentPortal() {
             <VictoryCard/>
           </svg>
         </div>
-        {/* <img src={require('./components/bar.png')} className="object-cover"/> */}
       </div>
 
       <div className="inline-block space-y-8 border-l-2 border-l-black pl-10">
         <h1 className="text-5xl font-bold pt-20 mt-5 mb-5">Opportunities</h1>
-        <FeatureCard oncampus />
-        <FeatureCard offcampus />
+        <FeatureCard oncampus campusdata={campusdata} />
+        <FeatureCard offcampus campusdata={campusdata} />
       </div>
       </div>
   );

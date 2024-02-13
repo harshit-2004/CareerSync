@@ -5,7 +5,6 @@ module.exports.overview = function(req, res) {
     Student_portal.find()
         .then(overviews => {
             // Send the overviews as a response
-            console.log(overviews);
             if(!overviews.length){
                 overviews = {
                   overview: {
