@@ -4,13 +4,13 @@ import { AiFillAmazonCircle, AiFillGoogleCircle } from "react-icons/ai";
 
 function Comp(props){
   console.log("inside props ",props);
-  const date = new Date(props.last_date);
+  const date = props.last_date;
   return (
       <div className="flex flex-row justify-between">
         <BsMicrosoft size={30} />
         <p>{props.name}</p>
         <p>{props.position}</p>
-        <p>{date.getDate()}</p>
+        <p>{date.substring(0,10)}</p>
       </div>
   )
 }
