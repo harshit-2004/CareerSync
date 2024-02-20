@@ -5,13 +5,14 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom'
 import "./SideDrawer.css";
-import OptionCard from "./components/OptionsCard";
-import img1 from "./assets/Option1.svg";
-import img2 from "./assets/Option2.svg";
-import img3 from "./assets/Option3.svg";
-import img4 from "./assets/Option4.svg";
-import img5 from "./assets/Option5.svg";
-import img6 from "./assets/Option6.svg";
+import OptionCard from "../../components/OptionsCard";
+import img1 from "../../assets/Option1.svg"
+import img2 from "../../assets/Option2.svg";
+import img3 from "../../assets/Option3.svg";
+import img4 from "../../assets/Option4.svg";
+import img5 from "../../assets/Option5.svg";
+import img6 from "../../assets/Option6.svg";
+import Login from "../../login/StudentLogin";
 
 const SideDrawer = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -25,7 +26,7 @@ const SideDrawer = () => {
       style={{ height: "100%" }}
     >
       <div className="drawer-icon" onClick={toggleDrawer}>
-        <img src={require("./image.jpg")} className="object-cover" />
+        <img src={require("../../image.jpg")} className="object-cover" />
       </div>
       <div
         style={{
@@ -80,7 +81,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/logout">
+          <Link to="http://localhost:8000/logout">
             <OptionCard
               optionImage={img6}
               optionLabel={"Logout"}

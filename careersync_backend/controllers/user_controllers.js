@@ -18,6 +18,17 @@ const path = require('path');
 // }
 
 module.exports.createSession = function(req, res){
+    // console.log("showing the req.user ",req.user);
+    // res.json({
+    //     id:req.user.id,
+    //     username: req.user.name,
+    //     useravatar:req.user.avatar,
+    //     useremail:req.user.email,
+        // branch:{
+        //     id:req.user.branch.id,
+        //     name:req.user.branch.name
+        // }
+    // });
     return res.redirect("http://localhost:3000/student-portal/")
 }
 
@@ -28,7 +39,7 @@ module.exports.signout= function(req,res){
             console.log("error in making value ",err);
             return next(err);
         }
-        return res.redirect('/');
+        return res.redirect('http://localhost:3000/login');
       });
 }
 

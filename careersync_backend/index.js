@@ -22,7 +22,7 @@ const MongoStore = require("connect-mongo");
 
 const bodyParser = require("body-parser")
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -52,6 +52,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 const port = "8000";
 

@@ -1,11 +1,6 @@
 import React from "react";
-import "./Login.css";
-
-import { useState, useEffect } from "react";
-
+import "./StudentLogin.css";
 function Login() {
-
-  const [error, setError] = useState(false);
 
   return (
     <div className="flex">

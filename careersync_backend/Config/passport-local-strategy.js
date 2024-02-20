@@ -40,7 +40,7 @@ passport.checkAuthentication = function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }else{
-        return res.redirect('/');
+        return res.redirect('http://localhost:3000/login');
     }
 }
 
@@ -51,6 +51,5 @@ passport.setAuthenticatedUser = function(req,res,next){
     }
     next();
 }
-
 
 module.exports = passport;

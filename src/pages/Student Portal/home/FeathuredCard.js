@@ -1,9 +1,8 @@
 import { BsMicrosoft } from "react-icons/bs";
-import { RiNetflixFill } from "react-icons/ri";
-import { AiFillAmazonCircle, AiFillGoogleCircle } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Comp(props){
-  console.log("inside props ",props);
   const date = props.last_date;
   return (
       <div className="flex flex-row justify-between">
@@ -16,7 +15,20 @@ function Comp(props){
 }
 
 function FeatureCard(props) {
-  const data = props.campusdata;
+  const [campusdata, setCampusdata] = useState();
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const rp = await axios.get("http://localhost:8000/company_data/oncampuss");
+          setCampusdata(rp.data); 
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+    
+      fetchData(); 
+    }, []); 
 
   return (
     <div className="h-96 aspect-square bg-[#F6F8FE] rounded-lg px-4 flex flex-col">
@@ -29,10 +41,10 @@ function FeatureCard(props) {
       </div>
 
       <div className="flex flex-col flex-1 gap-4 pt-6">
-        {data &&
-          data.map((element) => (
+        {campusdata &&
+          campusdata.map((element,index) => (
             <Comp
-              key={element.id} // Don't forget to add a unique key prop when rendering lists
+              key={index}
               name={element.companyName}
               position={element.position}
               last_date={element.last_date}
