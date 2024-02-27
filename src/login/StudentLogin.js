@@ -1,6 +1,18 @@
 import React from "react";
 import "./StudentLogin.css";
+import axios from "axios";
 function Login() {
+
+  async function  HandleClick(event){
+    event.preventDefault();
+    var {email,pass} = document.forms[0];
+    const userRequest = await axios.post("http://localhost:8000/login",{
+      email:email,
+      password:pass
+    });
+    
+    console.log(userRequest);
+  }
 
   return (
     <div className="flex">
@@ -46,12 +58,12 @@ function Login() {
             </div>
           </div>
           <form action="http://localhost:8000/login" method="Post">
-            <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" />
-            <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" />
+            <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" required />
+            <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" required/>
             <div className="text-end mt-5">
               <button className="text-[rgb(149,149,149)]">Forgot Password ?</button>
             </div>
-            <button className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white" type="submit" >
+            <button onSubmit={HandleClick} className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white">
               I'm Ready
             </button>
           </form>

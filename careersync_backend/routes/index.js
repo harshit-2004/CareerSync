@@ -1,10 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
-
-const branch = require('../model/branch');
 const passport = require("passport")
 const userController = require("../controllers/user_controllers")
+const company_data_controller = require("../controllers/companyDataController");
 
 router.get('/auth/google',passport.authenticate('google', { session: false ,scope:['profile','email'] }));
 
@@ -12,9 +10,7 @@ router.get('/auth/google/callback',passport.authenticate('google', {failureRedir
 
 router.post('/login',passport.authenticate('local', {failureRedirect: "http://localhost:3000/login",failureMessage:true}), userController.createSession);
 
-// router.post('/logout',passport.checkAuthentication,userController.signout);
-
-const company_data_controller = require("../controllers/companyDataController");
+router.get('/logout',userController.signout);
 
 router.use('/student_portal',require('./student_portal'));
 
