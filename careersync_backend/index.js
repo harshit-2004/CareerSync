@@ -6,24 +6,25 @@ const Mongostore = require("connect-mongo");
 const { connect, set } = require("mongoose");
 
 const path = require("path");
-
 const db = require('./config/mongoose');
-
 const passport = require("passport");
-
 const routes = require('./routes');
 const passportLocal = require("./config/passport-local-strategy");
-
 const passport_jwt = require("./config/passport-jwt");
-
 const passport_google = require('./config/passport-google-oauth20');
-
 const MongoStore = require("connect-mongo");
-
 const bodyParser = require("body-parser")
+var cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const config = require('./config/config');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(expressSession({
+  secret:config.passport_jwt
+}));
+app.use(cookieParser(config.passport_jwt));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -33,27 +34,7 @@ app.use((req, res, next) => {
   return next();
 })
 
-
-const session = require('express-session');
-
-app.use(session({
-  name:'Login Cookie',
-  secret:"pMzDrm9pVseg9j7uA4sC8PFJW6rJGkDX",
-  saveUninitialized:false,
-  resave:false,
-  cookie:{
-      maxAge:(1000 * 60 * 100)
-  },
-  store: MongoStore.create({
-      mongoUrl :"mongodb://localhost:27017/mydatabase",
-      autoRemove:'enabled'
-  })
-}));
-
 app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(passport.setAuthenticatedUser);
 
 const port = "8000";
 

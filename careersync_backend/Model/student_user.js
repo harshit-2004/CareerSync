@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
       type:mongoose.Schema.ObjectId,
       ref:"branch"
     },
+    token:{
+        type:String,
+        timestamps:true,
+        unique:true
+    }
   },
   {
     timestamps: true,

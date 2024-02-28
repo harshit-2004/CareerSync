@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./StudentLogin.css";
 import axios from "axios";
 function Login() {
-
-  async function  HandleClick(event){
+  const [logInError,setloginError] = useState(false);
+  const navigate = useNavigate();
+  async function getlogin(email, pass) {
+    try {
+      const userRequest = await axios.post("http://localhost:8000/student_portal/login", {
+        email: email,
+        password: pass
+      }, {
+        withCredentials: true
+      });
+      setloginError(false);
+      return userRequest.data; 
+    } catch (error) {
+      setloginError(true);
+      console.error(error);
+      throw error; 
+    }
+  }
+  
+  async function HandleClick(event) {
     event.preventDefault();
-    var {email,pass} = document.forms[0];
-    const userRequest = await axios.post("http://localhost:8000/login",{
-      email:email,
-      password:pass
-    });
-    
-    console.log(userRequest);
+    var email = document.forms[0].email.value; 
+    var pass = document.forms[0].password.value; 
+    console.log(email, pass);
+    try {
+      const userRequest = await getlogin(email, pass); 
+      navigate("/student_portal/");
+    } catch (error) {
+      console.error("Error occurred while logging in:", error);
+    }
   }
 
   return (
@@ -57,13 +78,14 @@ function Login() {
               Enter your University Credentials{" "}
             </div>
           </div>
-          <form action="http://localhost:8000/login" method="Post">
+          <form onSubmit={HandleClick}>
             <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" required />
             <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" required/>
             <div className="text-end mt-5">
               <button className="text-[rgb(149,149,149)]">Forgot Password ?</button>
             </div>
-            <button onSubmit={HandleClick} className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white">
+            {logInError&&<div className="text-red-700	">Incorrect Email or Password</div>}
+            <button type="submit"  className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white">
               I'm Ready
             </button>
           </form>

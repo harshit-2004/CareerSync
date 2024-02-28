@@ -3,7 +3,7 @@ const passport = require('passport');
 const config = require('./config.js');
 
 const cryptojs = require('crypto-js');
-const User = require('../model/user.js');
+const User = require('../model/student_user.js');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 

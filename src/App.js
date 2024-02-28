@@ -18,10 +18,10 @@ function App() {
         <Route index element={<AppPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/service" element={<Service />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/main-login" element={<Mainlogin />} />
-        <Route path="/student-portal">
+        <Route path="/student_portal">
           <Route index element={<StudentPortal />}/>
+          <Route path="login" element={<Login />} />
           <Route path="notification" element={<Notification />} />
           <Route path="profile" element={null} /> 
           <Route path="resume-builder" element={null} />

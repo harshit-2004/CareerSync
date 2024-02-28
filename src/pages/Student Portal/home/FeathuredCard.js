@@ -20,7 +20,7 @@ function FeatureCard(props) {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const rp = await axios.get("http://localhost:8000/company_data/oncampuss");
+          const rp = await axios.get("http://localhost:8000/student_portal/company_data/oncampuss");
           setCampusdata(rp.data); 
         } catch (error) {
           console.error('Error fetching data:', error);

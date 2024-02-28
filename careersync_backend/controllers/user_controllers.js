@@ -1,75 +1,78 @@
-const User = require('../model/user');
-
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const config = require("../config/config");
+const passport = require('passport');
 
 const path = require('path');
+const User = require('../model/student_user');
 
-// module.exports.login = (req, res) => {
-//     console.log("hit", req.body);
-//     if(req.isAuthenticated())
-//     {
-//       return res.redirect("http://localhost:3000/student-portal", {
-//         status:200
-//       });
-//     }
-//     return res.redirect("http://localhost:3000/main-login", {
-//       status:200
-//     });
-// }
-
-module.exports.createSession = function(req, res){
-    // console.log("showing the req.user ",req.user);
-    // res.json({
-    //     id:req.user.id,
-    //     username: req.user.name,
-    //     useravatar:req.user.avatar,
-    //     useremail:req.user.email,
-        // branch:{
-        //     id:req.user.branch.id,
-        //     name:req.user.branch.name
-        // }
-    // });
-    return res.redirect("http://localhost:3000/student-portal/")
-}
-
-module.exports.signout= function(req,res){
-    console.log("logged out successfully");
-    req.logout(function(err){
-        if(err){
-            console.log("error in making value ",err);
-            return next(err);
+module.exports.signIn = async function(req, res, info) {
+    console.log("signIn");
+    const user = req.user;
+    if (!user) {
+        return res.status(400).json({
+            message: info ? info.message : 'Login failed',
+            user: user
+        });
+    }
+    req.login(user, { session: false }, async (err) => {
+        if (err) {
+            return res.status(500).send(err);
         }
-        return res.redirect('http://localhost:3000/login');
-      });
-}
 
-module.exports.profile = function(req,res){
-    return res.render('profile',{
-        title:"From User controler"
+        const userDetail = {
+            id: user.id,
+            email: user.email,
+            name: user.name
+        };
+
+        const token = jwt.sign({ userDetail: userDetail }, config.passport_jwt);
+
+        try {
+            const userDocument = await User.findById(user.id);
+            if (userDocument) {
+                userDocument.token = token;
+                await userDocument.save();
+            }
+        } catch (error) {
+            console.error("Error occurred while updating user token:", error);
+            return res.status(500).json({ message: "Error occurred while updating user token" });
+        }
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            sameSite: true,
+            signed: true,
+            secure: true,
+            session:false
+        });
+        return res.status(200).json({ userDetail, token });
+        // return res.redirect("http://localhost:3000/student_login");
     });
+};
+
+
+module.exports.signout= async function(req,res){
+    console.log("logged out successfully");
+    try {
+        const userDocument = await User.findById(req.user.id);
+        if (userDocument) {
+            userDocument.token = "";
+            await userDocument.save();
+        }
+    } catch (error) {
+        console.error("Error occurred while updating user token:", error);
+        return res.status(500).json({ message: "Error occurred while updating user token" });
+    }
+    res.clearCookie("jwt");
+    return res.status(200).json({message:"Logged out successfully"});
 }
 
-module.exports.profile_update = async function(req,res){
-    try {
-        let user = await User.findByIdAndUpdate(
-          req.body.id,
-          { name: req.body.name, email: req.body.email ,
-            password:req.body.password
-          }
-        );
-        user.save();
-        req.flash('success', 'Profile Updated Successfully');
-        if(req.xhr){
-            return res.status(200).json({
-                data:{
-                    email:user.email
-                },
-                message:"Porfile Updated Successfully"
-            });
-        }
-        return res.redirect('back');
-      } catch (error) {
-        console.error(error);
-        return res.redirect('back');
-      }
+module.exports.checker = function(req,res,next){
+    
+    console.log("req user ",req.user);
+    if(req.user){
+        next();
+    }else{
+
+    }
 }
