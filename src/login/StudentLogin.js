@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudentLogin.css";
 import axios from "axios";
-function Login() {
+function Login({login, setlogin}) {
   const [logInError,setloginError] = useState(false);
   const navigate = useNavigate();
   async function getlogin(email, pass) {
@@ -29,6 +29,7 @@ function Login() {
     console.log(email, pass);
     try {
       const userRequest = await getlogin(email, pass); 
+      setlogin(true);
       navigate("/student_portal/");
     } catch (error) {
       console.error("Error occurred while logging in:", error);

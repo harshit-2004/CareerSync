@@ -45,8 +45,8 @@ module.exports.signIn = async function(req, res, info) {
             secure: true,
             session:false
         });
-        return res.status(200).json({ userDetail, token });
-        // return res.redirect("http://localhost:3000/student_login");
+        // return res.status(200).json({ userDetail, token });
+        return res.redirect("http://localhost:3000/student_portal");
     });
 };
 
