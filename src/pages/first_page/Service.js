@@ -189,7 +189,3 @@ const Text = ()=>{
    );
 }
 export default Service;
-
-
-
-

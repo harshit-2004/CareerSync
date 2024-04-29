@@ -18,6 +18,15 @@ var cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const config = require('./config/config');
 
+app.use((req, res, next) => {
+  // console.log(req.headers);
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Request-Method', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  return next();
+})
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,14 +34,6 @@ app.use(expressSession({
   secret:config.passport_jwt
 }));
 app.use(cookieParser(config.passport_jwt));
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Request-Method', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  return next();
-})
 
 app.use(passport.initialize());
 
