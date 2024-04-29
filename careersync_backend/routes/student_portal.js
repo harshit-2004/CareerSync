@@ -17,7 +17,7 @@ router.post('/login', passport.authenticate('local', { session: false }),user_co
 
 router.get("/overview",midleWareFile.checker,student_portal_controller.overview);
 
-router.post('/logout',passport.authenticate('jwt',{ session:false }),user_controllers.signout);
+router.post('/logout/:token',user_controllers.signout);
 
 router.post('/company_data/add_company'  , company_data_controller.addCompanyData);
 
