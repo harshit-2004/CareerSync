@@ -5,13 +5,13 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom'
 import "./SideDrawer.css";
-import OptionCard from "./components/OptionsCard";
-import img1 from "./assets/Option1.svg";
-import img2 from "./assets/Option2.svg";
-import img3 from "./assets/Option3.svg";
-import img4 from "./assets/Option4.svg";
-import img5 from "./assets/Option5.svg";
-import img6 from "./assets/Option6.svg";
+import OptionCard from "../../components/OptionsCard";
+import img1 from "../../assets/Option1.svg"
+import img2 from "../../assets/Option2.svg";
+import img3 from "../../assets/Option3.svg";
+import img4 from "../../assets/Option4.svg";
+import img5 from "../../assets/Option5.svg";
+import YourComponent from "./home/YourComponent";
 
 const SideDrawer = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -25,7 +25,7 @@ const SideDrawer = () => {
       style={{ height: "100%" }}
     >
       <div className="drawer-icon" onClick={toggleDrawer}>
-        <img src={require("./image.jpg")} className="object-cover" />
+        <img src={require("../../image.jpg")} className="object-cover" />
       </div>
       <div
         style={{
@@ -40,7 +40,7 @@ const SideDrawer = () => {
           className=" ml-2 mr-2"
           style={{ position: "relative", top: "10%" }}
         >
-          <Link to="/student-portal" className="font-inter font-bold">
+          <Link to="/student_portal" className="font-inter font-bold">
             <OptionCard
               optionImage={img1}
               optionLabel={"Home"}
@@ -48,7 +48,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/application">
+          <Link to="/student_portal/application">
             <OptionCard
               optionImage={img2}
               optionLabel={"Applications"}
@@ -56,7 +56,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/resume-builder">
+          <Link to="/student_portal/resume-builder">
             <OptionCard
               optionImage={img3}
               optionLabel={"Resume-Builder"}
@@ -64,7 +64,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/notification">
+          <Link to="/student_portal/notification">
             <OptionCard
               optionImage={img4}
               optionLabel={"Notifications"}
@@ -72,7 +72,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/profile">
+          <Link to="/student_portal/profile">
             <OptionCard
               optionImage={img5}
               optionLabel={"Profile"}
@@ -80,13 +80,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <Link to="/student-portal/logout">
-            <OptionCard
-              optionImage={img6}
-              optionLabel={"Logout"}
-              collapsed={collapsed}
-            />
-          </Link>
+          <YourComponent collapsed={collapsed}/>
         </div>
       </div>
     </div>

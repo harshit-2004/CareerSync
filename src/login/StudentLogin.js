@@ -1,11 +1,40 @@
-import React from "react";
-import "./Login.css";
-
-import { useState, useEffect } from "react";
-
-function Login() {
-
-  const [error, setError] = useState(false);
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./StudentLogin.css";
+import axios from "axios";
+function Login({login, setlogin}) {
+  const [logInError,setloginError] = useState(false);
+  const navigate = useNavigate();
+  async function getlogin(email, pass) {
+    try {
+      const userRequest = await axios.post("http://localhost:8000/student_portal/login", {
+        email: email,
+        password: pass
+      }, {
+        withCredentials: true
+      });
+      setloginError(false);
+      return userRequest.data; 
+    } catch (error) {
+      setloginError(true);
+      console.error(error);
+      throw error; 
+    }
+  }
+  
+  async function HandleClick(event) {
+    event.preventDefault();
+    var email = document.forms[0].email.value; 
+    var pass = document.forms[0].password.value; 
+    console.log(email, pass);
+    try {
+      const userRequest = await getlogin(email, pass); 
+      setlogin(true);
+      navigate("/student_portal/");
+    } catch (error) {
+      console.error("Error occurred while logging in:", error);
+    }
+  }
 
   return (
     <div className="flex">
@@ -50,13 +79,14 @@ function Login() {
               Enter your University Credentials{" "}
             </div>
           </div>
-          <form action="http://localhost:8000/login" method="Post">
-            <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" />
-            <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" />
+          <form onSubmit={HandleClick}>
+            <input type="email" name="email" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Email" required />
+            <input  pattern=".{8,}" title="Password must be at least 8 characters long"  type="password" name="password" className="bg-white border-[#00000091] my-3 p-5 w-full" placeholder="Enter the Password" required/>
             <div className="text-end mt-5">
               <button className="text-[rgb(149,149,149)]">Forgot Password ?</button>
             </div>
-            <button className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white" type="submit" >
+            {logInError&&<div className="text-red-700	">Incorrect Email or Password</div>}
+            <button type="submit"  className="text-3xl font-oswald text-center w-full mt-5 py-4 px-10 bg-black text-white">
               I'm Ready
             </button>
           </form>

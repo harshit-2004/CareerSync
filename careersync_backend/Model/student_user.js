@@ -13,15 +13,26 @@ const userSchema = new mongoose.Schema(
     },
     name: {
       type: String,
+      required:true,
     },
     avatar: {
       type: String,
+      required:true,
     },
     placement:{
         type:String,
     },
     internship:{
         type:String,
+    },
+    branch:{
+      type:mongoose.Schema.ObjectId,
+      ref:"branch"
+    },
+    token:{
+        type:String,
+        timestamps:true,
+        unique:true
     }
   },
   {
