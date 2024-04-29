@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
+const db = require('./config/mongoose');
 
 const Mongostore = require("connect-mongo");
 
 const { connect, set } = require("mongoose");
 
 const path = require("path");
-const db = require('./config/mongoose');
 const passport = require("passport");
 const routes = require('./routes');
 const passportLocal = require("./config/passport-local-strategy");

@@ -8,13 +8,13 @@ import Navbar from "../Navbar.js";
 // import {useLoaderData} from "react-router-dom";
 
 
-function StudentPortal() {
+function StudentPortal({setLogin}) {
   // const tp = useLoaderData();
   return (
 
     <div className="flex flex-row justify-between">
       <div className="app" style={{ position: "relative" , backgroundColor : 'white', zIndex : '100'}}>
-        <SideDrawer />
+        <SideDrawer setLogin={setLogin}/>
       {/* <Navbar/> */}
       </div>
       

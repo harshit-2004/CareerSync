@@ -13,7 +13,7 @@ import img4 from "../../assets/Option4.svg";
 import img5 from "../../assets/Option5.svg";
 import YourComponent from "./home/YourComponent";
 
-const SideDrawer = () => {
+const SideDrawer = ({setLogin}) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggleDrawer = () => {
     setCollapsed(!collapsed);
@@ -80,7 +80,7 @@ const SideDrawer = () => {
             />
           </Link>
 
-          <YourComponent collapsed={collapsed}/>
+          <YourComponent collapsed={collapsed} setLogin={setLogin}/>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /careersync_backend/node_modules
+/careersync_backend/config/config.js
 
 /.pnp
 .pnp.js
