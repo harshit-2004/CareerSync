@@ -9,6 +9,8 @@ router.get('/auth/google/callback',passport.authenticate('google', {failureRedir
 
 router.use('/student_portal',require('./student_portal'));
 
+router.get('/checkLogin',userController.checkerFirstPreviousLoggedIn );
+
 // router.use('/tpo',require('./tpo'));
 
 module.exports = router;

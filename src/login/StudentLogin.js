@@ -13,7 +13,13 @@ function Login({login, setlogin}) {
       }, {
         withCredentials: true
       });
+      console.log("Login post request data returning ",userRequest);
       setloginError(false);
+      setlogin(true);
+      if(userRequest.status == 200){
+        console.log("Successfully navigated to student_portal");
+        navigate('/student_portal');
+      }
       return userRequest.data; 
     } catch (error) {
       setloginError(true);
@@ -28,9 +34,8 @@ function Login({login, setlogin}) {
     var pass = document.forms[0].password.value; 
     console.log(email, pass);
     try {
-      const userRequest = await getlogin(email, pass); 
-      setlogin(true);
-      navigate("/student_portal/");
+      const uR = await getlogin(email, pass); 
+      console.log("Handle Click",uR);
     } catch (error) {
       console.error("Error occurred while logging in:", error);
     }

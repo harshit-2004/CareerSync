@@ -8,6 +8,7 @@ const User = require('../model/student_user');
 
 module.exports.signIn = async function(req, res, info) {
     console.log("signIn");
+    // req.locals.user = req.user;
     const user = req.user;
     if (!user) {
         return res.status(400).json({
@@ -46,7 +47,7 @@ module.exports.signIn = async function(req, res, info) {
             session:false
         });
         // return res.status(200).json({ userDetail, token });
-        return res.redirect("http://localhost:3000/student_portal");
+        return res.status(200).json({message: "Login Successfull"});
     });
 };
 
@@ -67,12 +68,10 @@ module.exports.signout= async function(req,res){
     return res.status(200).json({message:"Logged out successfully"});
 }
 
-module.exports.checker = function(req,res,next){
-    
-    console.log("req user ",req.user);
+module.exports.checkerFirstPreviousLoggedIn = function(req,res){
     if(req.user){
-        next();
+        return res.status(200).json({message :"Previous Signed IN"});
     }else{
-
+        return res.status(401).json({message:"Please login"});
     }
 }
