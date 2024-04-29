@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import HomePage from "./pages/first_page/AppPage";
+import HomePage from "./pages/first_page/AppPage.js";
 import StudentPortal, { loader as infocardloader } from "./pages/Student Portal/home/StudentPortal.js";
 import Login from "./login/StudentLogin.js";
 import Mainlogin from "./login/mainlogin.js";
@@ -11,6 +11,7 @@ import Table from "./pages/Student Portal/application/Application.js";
 import Notification from "./pages/Student Portal/notification/Notification.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/Student Portal/utils";
+import Alumni from "./pages/alumniPage/alumni.js";
 
 function App() {
   const [login, setlogin] = useState(false);
@@ -59,6 +60,7 @@ function App() {
       <Route path="/main-login" element={<Mainlogin />} />
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<HomePage />} />
+      <Route path="/alumni" element={<Alumni />}/>
     </Routes>
   )
 }
