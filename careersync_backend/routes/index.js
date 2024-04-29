@@ -11,6 +11,8 @@ router.use('/student_portal',require('./student_portal'));
 
 router.get('/checkLogin/:token',userController.checkerFirstPreviousLoggedIn );
 
+router.use('/alumni',require('./alumni'));
+
 // router.use('/tpo',require('./tpo'));
 
 module.exports = router;
