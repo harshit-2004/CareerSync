@@ -39,7 +39,7 @@ app.use(passport.initialize());
 
 const port = "8000";
 
-app.use('/', routes );
+app.use('/', routes);
 
 app.listen(port, function (err) {
   if (err) {
