@@ -1,0 +1,52 @@
+
+*{
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.first_div{
+    width: 40vw;
+   border: 2px solid grey;
+   margin-right:10px;
+}
+
+.second_div{
+    width:55vw;
+    border: 2px solid grey;
+    margin-left:10px;
+    
+}
+.outside{
+    width:38vw;
+    display:flex;
+    flex-direction: column;
+    justify-content:  space-between;
+
+    border: 1.5px solid grey;
+    border-radius: 10px;
+    margin:10px;
+    padding:10px;
+    
+}
+
+.inside{
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;
+}
+
+.btn_hr{
+    color:aliceblue;
+    background-color: rgb(113, 113, 187);
+    border-radius: 30%;
+    padding: 10px;
+}
+
+.right{
+    text-align: center;
+    padding: 10px;
+    margin: 0px auto;
+}
