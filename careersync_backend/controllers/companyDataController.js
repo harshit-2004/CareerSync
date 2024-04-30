@@ -15,5 +15,8 @@ module.exports.addCompanyData = async (req, res) => {
 module.exports.oncampusscampanies = async function(req, res) {
     // campuss, btechyear, branch, type: internship, placement, internship+placement
     const data = await CompanyData.find();
-    return res.json(data);
+    console.log(data);
+    return res.status(200).json({
+        data
+    });
   }

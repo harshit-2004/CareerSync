@@ -2,7 +2,7 @@ import React from "react";
 import "../../App.css";
 import Linemake from "./Linemake.js";
 
-import { useNavigate,Link, Outlet} from "react-router-dom";
+import { useNavigate, Link, Outlet } from "react-router-dom";
 
 function AppPage({ setLogin }) {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ function AppPage({ setLogin }) {
           <Link to='/service' className="loginbutton font-inter font-bold">Service</Link>
 
           <Outlet></Outlet>
-  
+
           <button
             className="font-inter mr-10 ml-5 rounded-xl text-xl font-bold"
             id="logbutton"

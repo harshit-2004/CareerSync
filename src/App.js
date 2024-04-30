@@ -12,6 +12,7 @@ import Notification from "./pages/Student Portal/notification/Notification.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/Student Portal/utils";
 import Alumni from "./pages/alumniPage/alumni.js";
+import HR from "./pages/HR";
 
 function App() {
   const [login, setlogin] = useState(false);
@@ -48,19 +49,24 @@ function App() {
   return (
     <Routes>
       {login &&
-        <Route path="/student_portal">
-          <Route index element={<StudentPortal setLogin={setlogin} />} />
-          <Route path="notification" element={<Notification />}></Route>
-          <Route path="profile" element={null} />
-          <Route path="resume-builder" element={null} />
-          <Route path="application" element={<Table />} />
-        </Route>}
+        <>
+          <Route path="/student_portal">
+            <Route index element={<StudentPortal setLogin={setlogin} />} />
+            <Route path="notification" element={<Notification />}></Route>
+            <Route path="profile" element={null} />
+            <Route path="resume-builder" element={null} />
+            <Route path="application" element={<Table />} />
+          </Route>
+
+          <Route path="/tpo_portal" element={<HR_new/>}></Route>
+        </>
+      }
       <Route path="/about" element={<About />} />
       <Route path="/service" element={<Service />} />
       <Route path="/main-login" element={<Mainlogin />} />
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<HomePage />} />
-      <Route path="/alumni" element={<Alumni />}/>
+      <Route path="/alumni" element={<Alumni />} />
     </Routes>
   )
 }

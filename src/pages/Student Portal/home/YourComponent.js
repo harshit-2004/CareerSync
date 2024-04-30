@@ -7,8 +7,9 @@ import { cookieSplitter } from '../utils';
 
 const YourComponent = ({ collapsed, setLogin }) => {
     const navigate = useNavigate();
-    const tokens = cookieSplitter(document.cookie);
+    
     const handleLogout = async () => {
+      const tokens = cookieSplitter(document.cookie);
       try {
         const res = await axios.post(`http://localhost:8000/student_portal/logout/${tokens.jwt}`, {}, { withCredentials: true });
         setLogin(false);
@@ -20,6 +21,7 @@ const YourComponent = ({ collapsed, setLogin }) => {
         console.error('Logout failed', error);
       }
     };
+
   return (
     <div onClick={handleLogout}>
       <OptionCard

@@ -1,7 +1,5 @@
-// eslint-disable-next-line import/no-anonymous-default-export
-
 import Linemake from "./first_page/Linemake";
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default () => {
 
          const members = [

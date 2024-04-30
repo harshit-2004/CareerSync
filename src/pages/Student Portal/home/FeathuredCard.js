@@ -16,12 +16,14 @@ function Comp(props){
 
 function FeatureCard(props) {
   const [campusdata, setCampusdata] = useState();
+
+  console.log(campusdata);
   
     useEffect(() => {
       const fetchData = async () => {
         try {
           const rp = await axios.get("http://localhost:8000/student_portal/company_data/oncampuss");
-          setCampusdata(rp.data); 
+          setCampusdata(rp.data.data); 
         } catch (error) {
           console.error('Error fetching data:', error);
         }

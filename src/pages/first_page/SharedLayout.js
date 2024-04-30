@@ -4,7 +4,7 @@ import "../../App.css";
 
 import { useNavigate, Link, Outlet } from "react-router-dom";
 
-function SharedLayout({ setLogin }) {
+function SharedLayout({ setLogin, login }) {
   const navigate = useNavigate();
 
   return (
@@ -43,13 +43,13 @@ function SharedLayout({ setLogin }) {
 
           <Outlet></Outlet>
 
-          <button
+          {login && <button
             className="font-inter mr-10 ml-5 rounded-xl text-xl font-bold"
             id="logbutton"
             onClick={() => navigate("/main-login")}
           >
             Login
-          </button>
+          </button>}
         </div>
       </nav>
       {/* <Linemake thickness="90" />
