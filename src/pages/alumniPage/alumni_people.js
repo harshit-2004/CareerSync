@@ -17,11 +17,12 @@ function AlumniPeople({alumniData}) {
         }));
     };
 
-    const handleSave = async (id) => {
+    async function handleSave(e){
+        e.preventDefault();
         try {
-            console.log(alumni);
-            // const response = await axios.post(`http://localhost:8000/alumni/update/${id}`, alumni);
-            // console.log(response.data);
+            console.log("saving alumni data ",alumni);
+            const response = await axios.post("http://localhost:8000/alumni/update", alumni);
+            console.log(response.data);
             setEditing(false);
         } catch (error) {
             console.error('Error updating alumni data:', error);
@@ -29,12 +30,12 @@ function AlumniPeople({alumniData}) {
     };
 
     return (
-        <div className="container mx-auto mt-10">
-            <h1 className="text-2xl font-bold mb-4">Alumni Page</h1>
-            <div className="grid grid-rows-10 gap-4">
+        <div className="container">
+            <div>
                 <div key={alumni.id} className="border p-4">
                 {editing ? (
-                    <form onSubmit={(e) => handleSave(e)}>
+                    <form onSubmit={(e) => handleSave(e)} className='grid grid-cols-2'>
+                        <div>Name : </div>
                         <input
                             type="text"
                             name="name"
@@ -42,6 +43,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Company Name : </div>
                         <input
                             type="text"
                             name="company"
@@ -49,6 +51,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Phone No : </div>
                         <input
                             type="text"
                             name="phone_no"
@@ -56,6 +59,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Role : </div>
                         <input
                             type="text"
                             name="role"
@@ -63,6 +67,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Email : </div>
                         <input
                             type="text"
                             name="email"
@@ -70,6 +75,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Avatar : </div>
                         <input
                             type="text"
                             name="avatar"
@@ -77,6 +83,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Graduation Year :</div>
                         <input
                             type="text"
                             name="graduation_year"
@@ -84,13 +91,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
-                        <input
-                            type="text"
-                            name="name"
-                            value={alumni.name}
-                            onChange={(e) => handleChange(e)}
-                            className="border border-gray-400 rounded px-2 py-1 mb-2"
-                        />
+                        <div>Address :</div>
                         <input
                             type="text"
                             name="address"
@@ -98,6 +99,7 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Linkdin : </div>
                         <input
                             type="text"
                             name="linkdin"
@@ -105,10 +107,11 @@ function AlumniPeople({alumniData}) {
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
+                        <div>Branch :</div>
                         <input
                             type="text"
-                            name="batch"
-                            value={alumni.batch}
+                            name="branch"
+                            value={alumni.branch}
                             onChange={(e) => handleChange(e)}
                             className="border border-gray-400 rounded px-2 py-1 mb-2"
                         />
@@ -119,16 +122,29 @@ function AlumniPeople({alumniData}) {
                         </button>
                     </form>
                 ) : (
-                    <div>
-                        <p>Name: {alumni.name}</p>
-                        <p>Batch: {alumni.company}</p>
-                        <p>Phone No: {alumni.phone_no}</p>
-                        <p>Email: {alumni.email}</p>
-                        <p>Avatar: {alumni.avatar}</p>
-                        <p>role: {alumni.role}</p>
-                        <p>Graduation Year: {alumni.graduation_year}</p>
-                        <p>Address: {alumni.address}</p>
-                        <p>Linkdin: {alumni.linkdin}</p>
+                    <div className="flex flex-col">
+                        <div className='grid grid-cols-2 center'>
+                            <div>Name :</div>
+                            <div>{alumni.name}</div>
+                            <div>Branch :</div>
+                            <div>{alumni.branch}</div>
+                            <div>Company :</div>
+                            <div>{alumni.company}</div>
+                            <div>Phone No :</div>
+                            <div>{alumni.phone_no}</div>
+                            <div>Email :</div>
+                            <div>{alumni.email}</div>
+                            <div>Avatar :</div>
+                            <div>{alumni.avatar}</div>
+                            <div>Role :</div>
+                            <div>{alumni.role}</div>
+                            <div>Graduation Year :</div>
+                            <div>{alumni.graduation_year}</div>
+                            <div>Address :</div>
+                            <div>{alumni.address}</div>
+                            <div>Linkdin :</div>
+                            <div>{alumni.linkdin}</div>
+                        </div>
                         <button
                             onClick={() => handleEdit(alumni.id)}
                             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2">

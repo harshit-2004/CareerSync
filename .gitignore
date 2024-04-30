@@ -6,6 +6,7 @@
 /careersync_backend/config/config.js
 placement-analysis-main/Oracle.csv
 placement-analysis-main/Microsoft.csv
+/placement-analysis/__pycache__
 
 /.pnp
 .pnp.js

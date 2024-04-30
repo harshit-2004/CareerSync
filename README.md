@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Running the Streamlit file use the link of 
+URL : http://localhost:8501
+command to execute file is : streamlit run placement.py
+
 ### `npm start`
 
 Runs the app in the development mode.\

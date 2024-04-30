@@ -18,7 +18,7 @@ import HR from "./pages/HR";
 
 function App() {
   const [login, setlogin] = useState(false);
-  console.log(document.cookie);
+  // console.log(document.cookie);
 
   useEffect(() => {
     const fun = async () => {
@@ -33,7 +33,7 @@ function App() {
           withCredentials: true,
           credentials: 'include'
         });
-        console.log("insied first time login", previousLoggedIn);
+        console.log("inside first time login", previousLoggedIn);
         if (previousLoggedIn.status == 200) {
           setlogin(true);
         }
@@ -67,7 +67,12 @@ function App() {
       <Route path="/main-login" element={<Mainlogin />} />
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<HomePage />} />
+<<<<<<< HEAD
       <Route path="/alumni" element={<Alumni />} />
+=======
+      <Route path="/alumni" element={<Alumni />}/>
+      <Route path="/alumni_public" element={<AlumniPublic/>}/>
+>>>>>>> 64c4246d8257461704fc1072e01417fe067da30b
     </Routes>
   )
 }
