@@ -9,6 +9,7 @@ import About from "./pages/first_page/About.js";
 import Service from "./pages/first_page/Service.js";
 import Table from "./pages/Student Portal/application/Application.js";
 import Notification from "./pages/Student Portal/notification/Notification.js";
+import { AvatarMenue } from "./pages/Student Portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/Student Portal/utils";
 import Alumni from "./pages/alumniPage/alumni.js";
