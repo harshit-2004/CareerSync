@@ -1,4 +1,4 @@
-import SideDrawer from "../../Student Portal/SideDrawer.js";
+import SideDrawer from "../../student_portal/SideDrawer.js";
 
 
 

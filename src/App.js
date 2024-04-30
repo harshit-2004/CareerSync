@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import "./App.css";
 import HomePage from "./pages/first_page/AppPage.js";
-import StudentPortal, { loader as infocardloader } from "./pages/Student Portal/home/StudentPortal.js";
+import StudentPortal, { loader as infocardloader } from "./pages/student_portal/home/StudentPortal.js";
 import Login from "./login/StudentLogin.js";
 import Mainlogin from "./login/mainlogin.js";
 import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements, Routes, Navigate } from "react-router-dom";
 import About from "./pages/first_page/About.js";
 import Service from "./pages/first_page/Service.js";
-import Table from "./pages/Student Portal/application/Application.js";
-import Notification from "./pages/Student Portal/notification/Notification.js";
-import { AvatarMenue } from "./pages/Student Portal/student_profile/account.js";
+import Table from "./pages/student_portal/application/Application.js";
+import Notification from "./pages/student_portal/notification/Notification.js";
+import { AvatarMenue } from "./pages/student_portal/student_profile/account.js";
 import axios from "axios";
-import { cookieSplitter } from "./pages/Student Portal/utils";
+import { cookieSplitter } from "./pages/student_portal/utils";
 import Alumni from "./pages/alumniPage/alumni.js";
 import HR from "./pages/HR";
 
@@ -55,11 +56,10 @@ function App() {
             <Route index element={<StudentPortal setLogin={setlogin} />} />
             <Route path="notification" element={<Notification />}></Route>
             <Route path="profile" element={null} />
-            <Route path="resume-builder" element={null} />
             <Route path="application" element={<Table />} />
           </Route>
 
-          <Route path="/tpo_portal" element={<HR_new/>}></Route>
+          <Route path="/tpo_portal" element={<HR/>}></Route>
         </>
       }
       <Route path="/about" element={<About />} />

@@ -3,7 +3,7 @@
 // import option1 from "./assets/option1.svg";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import "./SideDrawer.css";
 import OptionCard from "../../components/OptionsCard";
 import img1 from "../../assets/Option1.svg"
@@ -15,6 +15,7 @@ import YourComponent from "./home/YourComponent";
 
 const SideDrawer = ({setLogin}) => {
   const [collapsed, setCollapsed] = useState(true);
+  const navigator = useNavigate();
   const toggleDrawer = () => {
     setCollapsed(!collapsed);
   };
