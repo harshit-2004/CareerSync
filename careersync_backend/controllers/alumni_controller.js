@@ -22,11 +22,10 @@ module.exports.alumni_detail = async function(req, res) {
 }
 
 module.exports.updateProfile = async function(req, res) {
-    const alumniId = req.params.alminId;
     const updates = req.body; // Assuming req.body contains the updates
-
+    console.log("alumni updated data ",updates,updates._id);
     try {
-        const updatedAlumni = await Alumini.findByIdAndUpdate(alumniId, updates, { new: true });
+        const updatedAlumni = await Alumini.findByIdAndUpdate(updates._id, updates, { new: true });
 
         if (!updatedAlumni) {
             return res.status(404).json({ message: "Alumni not found" });

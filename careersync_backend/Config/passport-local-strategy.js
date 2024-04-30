@@ -16,6 +16,7 @@ async function (email, password, cb) {
             console.log("Incorrect email or password.");
             return cb(null, false,{ message: 'Incorrect email or password.' });
         }else{
+            console.log(user);
             return cb(null, user, {
                 message: 'Logged In Successfully'
             });
