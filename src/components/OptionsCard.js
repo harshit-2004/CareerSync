@@ -8,13 +8,15 @@ const OptionsCard = ({ collapsed, optionImage, optionLabel }) => {
         display: "flex",
         marginBottom: 12,
         width: "100%",
+        height:64,
         alignItems:'start',
         padding:4,
         borderRadius:4,
+        justifyContent:'center'
       }}
     >
       {collapsed ? (
-        <img src={optionImage} style={{ margin: "0 auto" }}></img>
+        <img src={optionImage} style={{ margin: "0 auto" , height:40, width:40 }}></img>
       ) : (
         <div
           className="expanded-option"
@@ -23,7 +25,7 @@ const OptionsCard = ({ collapsed, optionImage, optionLabel }) => {
             flexDirection: "row",
           }}
         >
-          <img src={optionImage} style={{ marginLeft:8 }} />
+          <img src={optionImage} style={{ marginLeft:8,height:40, width:40  }} />
           <span className= "font-oswald" style={{ marginLeft: 8, fontSize: 28 }}>{optionLabel}</span>
         </div>
       )}

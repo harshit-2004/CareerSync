@@ -15,14 +15,14 @@ function SmallCard(props) {
           ${props.third && 'bg-[#BDE5C5]'}
         `}>
             <img className='h-10' src={props.images}></img>
-            <div className=''>{props.heading}</div>
+            <div className='font-quick font-bold text-lg'>{props.heading}</div>
         </div>
 
         <div className='flex-1 flex flex-col pl-6 justify-center'>
             <div className='text-3xl font-bold items-baseline gap-2 flex flex-row whitespace-nowrap'>
-            {props.percentage}
+            <text className='font-bebas text-5xl'>{props.percentage}</text>
             {
-              props.subText && <p className='text-sm'>{props.subText}</p>
+              props.subText && <p className='text-2xl font-bebas font-light'>{props.subText}</p>
             }
             </div>
             <div className='text-lg font-medium'>{props.contentbox}</div>

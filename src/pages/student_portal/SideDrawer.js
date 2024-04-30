@@ -12,6 +12,7 @@ import img3 from "../../assets/Option3.svg";
 import img4 from "../../assets/Option4.svg";
 import img5 from "../../assets/Option5.svg";
 import YourComponent from "./home/YourComponent";
+import Backdrop from "../../components/backgrop";
 
 const SideDrawer = ({setLogin}) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -21,70 +22,40 @@ const SideDrawer = ({setLogin}) => {
   };
 
   return (
-    <div
-      className={`side-drawer ${collapsed ? "collapsed" : "uncollapsed"}`}
-      style={{ height: "100%" }}
-    >
-      <div className="drawer-icon" onClick={toggleDrawer}>
-        <img src={require("../../image.jpg")} className="object-cover" />
-      </div>
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#f6f8fe",
-        }}
-      >
-        <div
-          className=" ml-2 mr-2"
-          style={{ position: "relative", top: "10%" }}
-        >
-          <Link to="/student_portal" className="font-inter font-bold">
-            <OptionCard
-              optionImage={img1}
-              optionLabel={"Home"}
-              collapsed={collapsed}
-            />
-          </Link>
+    <>
+<Backdrop show={!collapsed} onClick={toggleDrawer} />
 
-          <Link to="/student_portal/application">
-            <OptionCard
-              optionImage={img2}
-              optionLabel={"Applications"}
-              collapsed={collapsed}
-            />
-          </Link>
+<div className={`side-drawer ${collapsed ? "collapsed" : "uncollapsed"}`} style={{ height: "100%" , zIndex:100}}>
+  <div className="drawer-icon" onClick={toggleDrawer}>
+    <img src={require("../../image.jpg")} className="object-cover" />
+  </div>
+  <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", backgroundColor: "#f6f8fe" }}>
+    <div className="ml-2 mr-2" style={{ position: "relative", top: "15%" }}>
+      <Link to="/student_portal" className="font-inter">
+        <OptionCard optionImage={img1} optionLabel={"Home"} collapsed={collapsed} />
+      </Link>
 
-          <Link to="/student_portal/resume-builder">
-            <OptionCard
-              optionImage={img3}
-              optionLabel={"Resume-Builder"}
-              collapsed={collapsed}
-            />
-          </Link>
+      <Link to="/student_portal/application">
+        <OptionCard optionImage={img2} optionLabel={"Applications"} collapsed={collapsed} />
+      </Link>
 
-          <Link to="/student_portal/notification">
-            <OptionCard
-              optionImage={img4}
-              optionLabel={"Notifications"}
-              collapsed={collapsed}
-            />
-          </Link>
+      <Link to="/student_portal/resume-builder">
+        <OptionCard optionImage={img3} optionLabel={"Resume-Builder"} collapsed={collapsed} />
+      </Link>
 
-          <Link to="/student_portal/profile">
-            <OptionCard
-              optionImage={img5}
-              optionLabel={"Profile"}
-              collapsed={collapsed}
-            />
-          </Link>
+      <Link to="/student_portal/notification">
+        <OptionCard optionImage={img4} optionLabel={"Notifications"} collapsed={collapsed} />
+      </Link>
 
-          <YourComponent collapsed={collapsed} setLogin={setLogin}/>
-        </div>
-      </div>
+      <Link to="/student_portal/profile">
+        <OptionCard optionImage={img5} optionLabel={"Profile"} collapsed={collapsed} />
+      </Link>
+
+      <YourComponent collapsed={collapsed} setLogin={setLogin} />
     </div>
+  </div>
+</div>
+    </>
   );
 };
 

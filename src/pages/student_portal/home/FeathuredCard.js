@@ -6,10 +6,10 @@ function Comp(props){
   const date = props.last_date;
   return (
       <div className="flex flex-row justify-between">
-        <BsMicrosoft size={30} />
-        <p>{props.name}</p>
-        <p>{props.position}</p>
-        <p>{date.substring(0,10)}</p>
+        <BsMicrosoft className="mr-5" size={30} />
+        <p className="mx-6 font-inter font-bold text-lg">{props.name}</p>
+        <p className="mx-6 font-inter font-bold text-lg">{props.position}</p>
+        <p className="ml-6 font-inter font-bold text-lg text-gray-500">{date.substring(0,10)}</p>
       </div>
   )
 }
@@ -33,16 +33,16 @@ function FeatureCard(props) {
     }, []); 
 
   return (
-    <div className="h-96 aspect-square bg-[#F6F8FE] rounded-lg px-4 flex flex-col">
-      <div className="flex flex-row justify-between items-center pt-12 h-20">
-        <h1>Upcoming Opportunities</h1>
+    <div className="bg-[#F6F8FE] rounded-2xl px-8 flex flex-col">
+      <div className="flex flex-row justify-between items-center pt-8">
+        <h1 className="font-quick font-bold text-xl">Upcoming Opportunities</h1>
 
         <span className="bg-[#E8EDFD] px-2 py-1 rounded-xl">
           {props.oncampus ? "Oncampus" : "Offcampus"}
         </span>
       </div>
 
-      <div className="flex flex-col flex-1 gap-4 pt-6">
+      <div className="flex flex-col flex-1 gap-4 pt-6 pb-8">
         {campusdata &&
           campusdata.map((element,index) => (
             <Comp
