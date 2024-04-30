@@ -1,6 +1,7 @@
 import React from "react";
 import "../../App.css";
 import Linemake from "./Linemake.js";
+import Logo from "../../image.jpg";
 
 import { useNavigate, Link, Outlet } from "react-router-dom";
 

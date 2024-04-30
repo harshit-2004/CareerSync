@@ -27,7 +27,7 @@ const SideDrawer = ({setLogin}) => {
 
 <div className={`side-drawer ${collapsed ? "collapsed" : "uncollapsed"}`} style={{ height: "100%" , zIndex:100}}>
   <div className="drawer-icon" onClick={toggleDrawer}>
-    <img src={require("../../image.jpg")} className="object-cover" />
+    <img src={require("../../image.jpg")} className="object-cover h-16 w-14" />
   </div>
   <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", backgroundColor: "#f6f8fe" }}>
     <div className="ml-2 mr-2" style={{ position: "relative", top: "15%" }}>
