@@ -12,11 +12,12 @@ import Notification from "./pages/Student Portal/notification/Notification.js";
 import { AvatarMenue } from "./pages/Student Portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/Student Portal/utils";
-import Alumni from "./pages/alumniPage/alumni.js";
+import Alumni from "./pages/alumniPage/alumni_tpo.js";
+import AlumniPublic from "./pages/alumniPage/alumni_for_public.js";
 import HR from './pages/HR.js'
 function App() {
   const [login, setlogin] = useState(false);
-  console.log(document.cookie);
+  // console.log(document.cookie);
 
   useEffect(() => {
     const fun = async () => {
@@ -31,7 +32,7 @@ function App() {
           withCredentials: true,
           credentials: 'include'
         });
-        console.log("insied first time login", previousLoggedIn);
+        console.log("inside first time login", previousLoggedIn);
         if (previousLoggedIn.status == 200) {
           setlogin(true);
         }
@@ -62,6 +63,7 @@ function App() {
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<HomePage />} />
       <Route path="/alumni" element={<Alumni />}/>
+      <Route path="/alumni_public" element={<AlumniPublic/>}/>
     </Routes>
   )
 }

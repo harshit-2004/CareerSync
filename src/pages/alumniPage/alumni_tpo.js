@@ -2,19 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AlumniPeople from './alumni_people';
 
-const pk = [
-    {id:"1", name: 'John Doe', batch: '2020' },
-    {id:"3", name: 'Jane Smith', batch: '2019' },
-    {id:"4", name: 'Alice Johnson', batch: '2021' },
-    {id:"5", name: 'Bob Williams', batch: '2018' },
-    {id:"6", name: 'Eva Martinez', batch: '2017' },
-    {id:"7", name: 'John Doe', batch: '2020' },
-    {id:"8", name: 'Jane Smith', batch: '2019' },
-    {id:"9", name: 'Alice Johnson', batch: '2021' },
-    {id:"10", name: 'Bob Williams', batch: '2018' },
-    {id:"11", name: 'Eva Martinez', batch: '2017' },
-]
-
 const Alumni = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,7 +14,7 @@ const Alumni = () => {
                 setLoading(true);
                 const response = await axios.get(`http://localhost:8000/alumni/alumni_detail/${currentPage}`);
                 setData(response.data.details);
-                setData(pk);
+                // setData(pk);
                 setTotalPages(response.data.totalPages);
                 setLoading(false);
             } catch (error) {
@@ -57,16 +44,21 @@ const Alumni = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="space-y-4">
-                {/* Render fetched data */}
+            <div class="flex justify-center items-center p-10">
+                <div class="p-4 bg-gray-200 rounded-md shadow-md">
+                    Alumni's
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 p-10">
                 {data && data.map((item, index) => {
-                    return (<div key={index} className="border p-4">
+                    return (<div key={index} className="">
                         <AlumniPeople alumniData={item} />
                     </div>)
                 })}
 
             </div>
-            <div className="mt-4">
+            <div class="flex justify-center items-center">
                 <button 
                     onClick={handlePrevPage} 
                     disabled={currentPage === 1}
