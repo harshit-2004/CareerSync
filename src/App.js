@@ -9,10 +9,11 @@ import About from "./pages/first_page/About.js";
 import Service from "./pages/first_page/Service.js";
 import Table from "./pages/Student Portal/application/Application.js";
 import Notification from "./pages/Student Portal/notification/Notification.js";
+import { AvatarMenue } from "./pages/Student Portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/Student Portal/utils";
 import Alumni from "./pages/alumniPage/alumni.js";
-
+import HR from './pages/HR.js'
 function App() {
   const [login, setlogin] = useState(false);
   console.log(document.cookie);
@@ -51,8 +52,8 @@ function App() {
         <Route path="/student_portal">
           <Route index element={<StudentPortal setLogin={setlogin} />} />
           <Route path="notification" element={<Notification />}></Route>
-          <Route path="profile" element={null} />
-          <Route path="resume-builder" element={null} />
+          <Route path="profile" element={<AvatarMenue/>} />
+          <Route path="resume-builder" element={<HR/>} />
           <Route path="application" element={<Table />} />
         </Route>}
       <Route path="/about" element={<About />} />
