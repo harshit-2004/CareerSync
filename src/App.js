@@ -18,7 +18,6 @@ import HR from "./pages/HR";
 
 function App() {
   const [login, setlogin] = useState(false);
-  // console.log(document.cookie);
 
   useEffect(() => {
     const fun = async () => {
