@@ -124,6 +124,13 @@ function AlumniPeople({alumniData}) {
                 ) : (
                     <div className="flex flex-col">
                         <div className='grid grid-cols-2 center'>
+                            <div>Avatar :</div>
+                            <img
+                                src={`${alumni.avatar}`}
+                                alt="Alumni Avatar"
+                                className="rounded-full w-24 h-24 object-cover"
+                                />
+
                             <div>Name :</div>
                             <div>{alumni.name}</div>
                             <div>Branch :</div>
@@ -134,8 +141,6 @@ function AlumniPeople({alumniData}) {
                             <div>{alumni.phone_no}</div>
                             <div>Email :</div>
                             <div>{alumni.email}</div>
-                            <div>Avatar :</div>
-                            <div>{alumni.avatar}</div>
                             <div>Role :</div>
                             <div>{alumni.role}</div>
                             <div>Graduation Year :</div>

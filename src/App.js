@@ -13,6 +13,7 @@ import axios from "axios";
 import { cookieSplitter } from "./pages/student_portal/utils";
 import AlumniTPO from "./pages/alumniPage/alumni_tpo.js";
 import RootHomePage from "./pages/first_page/RootHomePage.jsx"
+import TpoRoot from "./pages/TPO/TpoRoot.js";
 
 import HR from "./pages/HR";
 
@@ -58,7 +59,7 @@ function App() {
             <Route path="application" element={<Table />} />
           </Route>
 
-          <Route path="/tpo_portal" element={<HR/>}></Route>
+          <Route path="/tpo_portal" element={<TpoRoot/>}></Route>
         </>
       }
       <Route path="/main-login" element={<Mainlogin />} />
