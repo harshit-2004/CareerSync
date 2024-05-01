@@ -15,6 +15,9 @@ oAuth2Client.apiKey = secrets.gmail_api;
 
 const listMessages = async (req, res) => {
     const token = jwt.decode(req.params.token, secrets.passport_jwt);
+    if(token){
+        res.status(300).json({message:"Enter login again"});
+    }
     const userId = token.userDetail.id;
 
     // return if not user found

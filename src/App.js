@@ -13,7 +13,9 @@ import Notification from "./pages/student_portal/notification/Notification.js";
 import { AvatarMenue } from "./pages/student_portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/student_portal/utils";
-import Alumni from "./pages/alumniPage/alumni_for_public.js";
+import AlumniTPO from "./pages/alumniPage/alumni_tpo.js";
+import AlumniPublic from "./pages/alumniPage/alumni_for_public.js";
+
 import HR from "./pages/HR";
 
 function App() {
@@ -66,7 +68,7 @@ function App() {
       <Route path="/main-login" element={<Mainlogin />} />
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<HomePage />} />
-      <Route path="/alumni" element={<Alumni />}/>
+      <Route path="/alumni" element={<AlumniTPO />}/>
       <Route path="/alumni_public" element={<AlumniPublic/>}/>
     </Routes>
   )
