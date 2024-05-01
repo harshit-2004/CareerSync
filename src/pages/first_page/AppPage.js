@@ -10,45 +10,6 @@ function AppPage({ setLogin }) {
 
   return (
     <div className="body">
-      <nav className="first-big-box">
-        <div className="logoclass1">
-          <img
-            id="logoelement1"
-            width={16}
-            height={16}
-            src={Logo}careersynclogo
-            alt="CareerSync Logo"
-          />
-          <div className="jcodemera font-bebas">CAREER SYNC</div>
-        </div>
-        <div className="loginclass">
-          {/* <button className="loginbutton font-inter font-bold" src="/">
-            Home
-          </button>
-          <div className="widthbox">|</div>
-          <button className="loginbutton font-inter font-bold" src="/">
-            Services
-          </button>
-          <div className="widthbox">|</div>
-          <button className="loginbutton font-inter font-bold" src="/">
-            About
-          </button> */}
-
-          <Link to='/' className="loginbutton font-inter font-bold">Home</Link>
-          <Link to='/about' className="loginbutton font-inter font-bold">About</Link>
-          <Link to='/service' className="loginbutton font-inter font-bold">Service</Link>
-
-          <Outlet></Outlet>
-
-          <button
-            className="font-inter mr-10 ml-5 rounded-xl text-xl font-bold"
-            id="logbutton"
-            onClick={() => navigate("/main-login")}
-          >
-            Login
-          </button>
-        </div>
-      </nav>
       <Linemake thickness="90" />
       <div className="gif-and-text">
         <img src="/staffing.gif"></img>
