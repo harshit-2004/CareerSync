@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import "./App.css";
-import HomePage from "./pages/first_page/AppPage.js";
 import StudentPortal, { loader as infocardloader } from "./pages/student_portal/home/StudentPortal.js";
 import Login from "./login/StudentLogin.js";
 import Mainlogin from "./login/mainlogin.js";
 import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements, Routes, Navigate } from "react-router-dom";
 import About from "./pages/first_page/About.js";
-import Service from "./pages/first_page/Service.js";
 import Table from "./pages/student_portal/application/Application.js";
 import Notification from "./pages/student_portal/notification/Notification.js";
 import { AvatarMenue } from "./pages/student_portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/student_portal/utils";
 import AlumniTPO from "./pages/alumniPage/alumni_tpo.js";
-import AlumniPublic from "./pages/alumniPage/alumni_for_public.js";
+import RootHomePage from "./pages/first_page/RootHomePage.jsx"
 
 import HR from "./pages/HR";
 
@@ -63,13 +61,10 @@ function App() {
           <Route path="/tpo_portal" element={<HR/>}></Route>
         </>
       }
-      <Route path="/about" element={<About />} />
-      <Route path="/service" element={<Service />} />
       <Route path="/main-login" element={<Mainlogin />} />
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
-      <Route path="/*" element={<HomePage />} />
+      <Route path="/*" element={<RootHomePage />} />
       <Route path="/alumni" element={<AlumniTPO />}/>
-      <Route path="/alumni_public" element={<AlumniPublic/>}/>
     </Routes>
   )
 }

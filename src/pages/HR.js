@@ -24,10 +24,14 @@ export default () => {
     const callAPI = async () => {
       setLoading(true);
       const tokens = cookieSplitter(document.cookie);
-      const res = await axios.get(`http://localhost:8000/tpo/fetch_emails/${tokens.jwt}`);
-      setLoading(false);
-      setMessages(res.data);
-      console.log(res.data);
+      try{
+        const res = await axios.get(`http://localhost:8000/tpo/fetch_emails/${tokens.jwt}`);
+        setLoading(false);
+        setMessages(res.data);
+        console.log(res.data);
+      }catch(err){
+        console.log("Error in fetching emails ",err);
+      }
     }
 
     callAPI();

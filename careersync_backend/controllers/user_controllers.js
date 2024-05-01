@@ -58,7 +58,7 @@ module.exports.signout= async function(req,res){
     const token = req.params.token;
 
     const userDetails = jwt.decode(token, config.passport_jwt);
-    console.log(userDetails.userDetail.id);
+    console.log(userDetails);
 
     try {
         if(!userDetails.userDetail.id){
