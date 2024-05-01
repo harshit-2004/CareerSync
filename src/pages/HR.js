@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./HR.css";
 import axios from "axios";
 import { cookieSplitter } from "./student_portal/utils";
 import MarkDown  from 'react-markdown'
+import LC from '../assets/lc.png'
 
 function C1({ item }) {
-  console.log("insdie c1 ", item);
+  // console.log("insdie c1 ", item);
   return (
     <div className="right prose">
       {item}
@@ -15,6 +16,7 @@ function C1({ item }) {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const [active, setactive] = useState(false);
+  const emailRef = useRef();
   const [item, setItem] = useState({});
 
   const [loading, setLoading] = useState(false);
@@ -44,7 +46,7 @@ export default () => {
   }
 
   return (
-    <section className="relative max-w-screen-xl mx-auto py-4 px-4 md:px-8">
+    <section className="relative py-4 px-4 md:px-8">
       {loading && 
       <div className="relative z-10 gap-5 items-center lg:flex">
         <div className="flex-1 max-w-lg py-5 sm:mx-auto sm:text-center lg:max-w-max lg:text-left">
@@ -69,26 +71,45 @@ export default () => {
       </div>}
 
       <div>
-        <div className="container">
-          <div className="first_div">
-            {messages.map((item, index) => {
+        
+        <div className="flex flex-1 flex-row bg-white" >
+          <div className="flex flex-col space-y-3">
+          {messages.map((item, index) => {
               return (
-                <div className="outside" key={index}>
-                  <div className="inside">
-                    <p className="text-3xl text-gray-800 font-semibold md:text-4xl">
-                      {item.title}
-                    </p>
-                    <button className="btn_hr" onClick={() => rtx(item)}>Click</button>
-                  </div>
-                  <p className="text-2xl text-gray-800 font-semibold md:text-2xl text-left">
-                    {item.sender}
-                  </p>
-                </div>
+                <div className="w-auto flex flex-row border-2 rounded-lg space-x-4 p-5 " onClick={()=>{
+                  rtx(item)
+                  emailRef.current.innerHTML = item.msg_body
+                }}>
+                  <div className="flex rounded-full items-center">
+            <img src={LC}  height={48} width={48}  className="object-cover  rounded-full" />
+            </div>
+            <div className="flex flex-col space-y-2">
+            <text className="text-2xl">{item.title}</text>
+            <text className="text-sm text-gray-400 font-bold">Sent by: {item.sender}</text>
+
+            </div>
+            </div>
+                // <div className="outside" key={index}>
+                //   <div className="inside">
+                //     <p className="text-xl text-gray-800 font-semibold md:text-4xl">
+                //       {item.title}
+                //     </p>
+                //     <button className="btn_hr" onClick={() => rtx(item)}>Click</button>
+                //   </div>
+                //   <p className="text-2xl text-gray-800 font-semibold md:text-2xl text-left">
+                //     {item.sender}
+                //   </p>
+                // </div>
               );
-            })}
+            })} 
+          </div>
+          <div className="ml-6 rounded-lg">
+          <div ref={emailRef} className="w-2/3 p-4 whitespace-pre-wrap border-2">
           </div>
 
-          <div className="second_div">{active && <C1 item={item.msg_body}></C1>}</div>
+          </div>
+
+          {/* <div className="second_div">{active && <C1 item={item.msg_body}></C1>}</div> */}
         </div>
       </div>
     </section>

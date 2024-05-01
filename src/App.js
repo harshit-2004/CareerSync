@@ -11,10 +11,15 @@ import Notification from "./pages/student_portal/notification/Notification.js";
 import { AvatarMenue } from "./pages/student_portal/student_profile/account.js";
 import axios from "axios";
 import { cookieSplitter } from "./pages/student_portal/utils";
+<<<<<<< HEAD
 import AlumniTPO from "./pages/alumniPage/alumni_tpo.js";
 import RootHomePage from "./pages/first_page/RootHomePage.jsx"
 import TpoRoot from "./pages/TPO/TpoRoot.js";
 
+=======
+import Alumni from "./pages/alumniPage/alumni_tpo.js";
+import AlumniPublic from "./pages/alumniPage/alumni_people.js";
+>>>>>>> 2cc48c4 (my changes)
 import HR from "./pages/HR";
 
 function App() {

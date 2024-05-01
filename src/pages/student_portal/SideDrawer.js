@@ -39,7 +39,10 @@ const SideDrawer = ({setLogin}) => {
         <OptionCard optionImage={img2} optionLabel={"Applications"} collapsed={collapsed} />
       </Link>
 
-      <Link to="/student_portal/resume-builder">
+      <Link to="/student_portal/resume-builder" onClick={() => {
+        document.location.href = 'http://127.0.0.1:5500/index.html';
+      }
+      }>
         <OptionCard optionImage={img3} optionLabel={"Resume-Builder"} collapsed={collapsed} />
       </Link>
 
