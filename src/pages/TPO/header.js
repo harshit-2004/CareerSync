@@ -27,7 +27,7 @@ function header({ setChild }) {
             <li>
               <button
                 className="loginbutton font-inter font-bold px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600"
-                onClick={() => setChild("analysis")}
+                onClick={()=>window.open('http://localhost:8501', '_blank')}
               >
                 Analysis
               </button>
