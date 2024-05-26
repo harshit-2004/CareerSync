@@ -17,4 +17,4 @@ const SideDrawer = props => {
   )
 }
 
-export default sideDrawer
+export default SideDrawer

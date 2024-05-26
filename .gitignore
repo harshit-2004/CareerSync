@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-/careersync_backend/node_modules
-/careersync_backend/config/config.js
+careersync_backend/node_modules
+careersync_backend/config/config.js
 placement-analysis-main/Oracle.csv
 placement-analysis-main/Microsoft.csv
 placement-analysis-main/__pycache__

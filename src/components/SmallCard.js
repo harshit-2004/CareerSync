@@ -1,5 +1,4 @@
 import React from 'react';
-import './SmallCard.module.css';
 
 function SmallCard(props) {
 

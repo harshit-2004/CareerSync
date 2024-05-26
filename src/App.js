@@ -66,6 +66,7 @@ function App() {
       <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
       <Route path="/*" element={<RootHomePage />} />
       <Route path="/alumni" element={<AlumniTPO />}/>
+      <Route path="/table" element={Table}/>
     </Routes>
   )
 }

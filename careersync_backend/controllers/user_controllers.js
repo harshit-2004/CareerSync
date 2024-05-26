@@ -77,17 +77,19 @@ module.exports.signout= async function(req,res){
     return res.status(200).json({message:"Logged out successfully"});
 }
 
-module.exports.checkerFirstPreviousLoggedIn = async function(req,res){
+module.exports.checkerFirstPreviousLoggedIn = async function(req, res) {
     const token = req.params.token;
-
-    console.log(token);
-
-    try{
-        const ret = jwt.verify(token, config.passport_jwt);
-        console.log(ret);
-        return res.status(200).json({message :"Previous Signed IN"});
-    }
-    catch(err){
-        return res.status(401).json({message:"Please login"});
+    if (token!="undefined") {
+        try {
+            console.log(token);
+            const ret = jwt.verify(token, config.passport_jwt);
+            console.log(ret);
+            return res.status(200).json({ message: "Previous Signed IN" });
+        } catch (err) {
+            console.log("First login checker ", err);
+            return res.status(401).json({ message: "Please login" });
+        }
+    } else {
+        return res.status(401).json({ message: "Please login" });
     }
 }
