@@ -23,8 +23,9 @@ user_menu= st.sidebar.radio(
     ('Overall Analysis','Branch-wise Analysis','Company-wise Analysis','Placed Student Analysis')
 )
 
-selected_year= st.sidebar.selectbox('Select Year', list(range(2019,2024)))
-selected_branch = st.sidebar.selectbox('Select Branch', ['All','IT', 'CSE', 'ECE', 'EEE'])
+# Currently focussing only on the present year and IT Branch
+selected_year= st.sidebar.selectbox('Select Year', list(range(2020,2024)))
+selected_branch = st.sidebar.selectbox('Select Branch', ['All','IT', 'CSE', 'ECE', 'EE','Other Branches'])
 
 custom_css = """
     <style>
@@ -161,13 +162,6 @@ elif user_menu=='Branch-wise Analysis':
     fig_cgpa_branch.update_traces(marker_color='green', marker_line_color='black', marker_line_width=1.5)
     fig_cgpa_branch.update_layout(showlegend=False)
     st.plotly_chart(fig_cgpa_branch)
-
-    # 10th and 12th Marks for selected branch
-    st.subheader(f"10th and 12th Marks")
-    fig_marks_branch= px.scatter(company[company['Branch'] == selected_branch], x='10th Percentage', y='12th Percentage', title=f'10th vs 12th Marks for {selected_branch}', color='CGPA')
-    fig_marks_branch.update_traces(marker_line_color='black', marker_line_width=1.5)
-    fig_marks_branch.update_layout(showlegend=True)
-    st.plotly_chart(fig_marks_branch)
 
     # Gender ratio in selected branch
     st.subheader(f"Gender Ratio")
