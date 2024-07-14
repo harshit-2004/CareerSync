@@ -3,6 +3,7 @@ import "../../App.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cookieSplitter } from '../student_portal/utils';
+import { Link } from "react-router-dom";
 
 function Header({ setChild, tpologin, settpologin }) {
   const navigate = useNavigate();
@@ -30,7 +31,8 @@ function Header({ setChild, tpologin, settpologin }) {
   return (
     <div className="body">
       <nav className="first-big-box">
-        <div className="logoclass1">
+        <Link to="/home">
+        <div className="logoclass1 cursor-pointer">
           <img
             id="logoelement1"
             src="/careersynclogo.svg"
@@ -38,6 +40,7 @@ function Header({ setChild, tpologin, settpologin }) {
           />
           <div className="codemera font-bebas">CAREER SYNC</div>
         </div>
+      </Link>
         <div className="loginclass">
           <ul className="flex space-x-4 text-black">
             <li>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function TpoLogin({ login, setLogin }) {
@@ -35,7 +36,8 @@ function TpoLogin({ login, setLogin }) {
   const googleLogin = useGoogleLogin({
     onSuccess: tokenResponse => onSuccess(tokenResponse),
     onError: {onFailure},
-    scope: "email profile https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    scope: "email profile https://www.googleapis.com/auth/gmail.addons.current.message.readonly https://www.googleapis.com/auth/gmail.readonly https://mail.google.com/ https://www.googleapis.com/auth/gmail.labels",
+    //'profile', 'email', 'https://www.googleapis.com/auth/gmail.addons.current.message.readonly','https://www.googleapis.com/auth/gmail.readonly','https://mail.google.com/' , 'https://www.googleapis.com/auth/gmail.labels'
     flow: 'auth-code',
   });
 
@@ -43,6 +45,7 @@ function TpoLogin({ login, setLogin }) {
     <div className="flex">
       <div className="flex border-l-4 p-20 pt-10 flex-col flex-auto bg-[#F6F8FE]">
         <div className="flex flex-col">
+          <Link to="/home">
           <div className="flex mt-10 justify-start items-center">
             <img
               className="w-60 h-60"
@@ -53,6 +56,7 @@ function TpoLogin({ login, setLogin }) {
               CAREERSYNC
             </p>
           </div>
+          </Link>
           <div className="text-6xl font-playFair mb-2">
             TPO LOGIN
           </div>

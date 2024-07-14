@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./StudentLogin.css";
 import axios from "axios";
 function Login({login, setLogin}) {
@@ -70,17 +71,19 @@ function Login({login, setLogin}) {
 
         <div className="flex border-l-4 p-20 pt-10 flex-col flex-auto bg-[#F6F8FE] ">
           <div className="flex flex-col">
-            <div className="flex mt-10 justify-start items-center">
-              <img
-                className="w-60 h-60 "
-                src="/careersynclogo.svg"
-                alt="CareerSync Logo"
-              />
+            <Link to="/home" >
+              <div className="flex mt-10 justify-start items-center">
+                <img
+                  className="w-60 h-60 "
+                  src="/careersynclogo.svg"
+                  alt="CareerSync Logo"
+                  />
 
-              <p className="text-6xl font-bebas flex justify-center relative right-5 py-3">
-                CAREERSYNC
-              </p>
-            </div>
+                <p className="text-6xl font-bebas flex justify-center relative right-5 py-3">
+                  CAREERSYNC
+                </p>
+              </div>
+            </Link>
             <div className="text-6xl font-playFair mb-2">
               Unlock Your Future
             </div>
