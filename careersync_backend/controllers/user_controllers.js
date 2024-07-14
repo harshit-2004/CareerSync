@@ -7,20 +7,59 @@ const path = require('path');
 const User = require('../model/student_user');
 const { CLIENT_URL } = require('../config/config');
 
-module.exports.signIn = async function(req, res, info) {
-    console.log("signIn");
-    // req.locals.user = req.user;
+module.exports.googlesignIn = async function(req,res,info){
     const user = req.user;
+    console.log("user ",user);
     if (!user) {
         return res.status(400).json({
             message: info ? info.message : 'Login failed',
             user: user
         });
     }
-    req.login(user, { session: false }, async (err) => {
-        if (err) {
-            return res.status(500).send(err);
+    const userDetail = {
+        id: user.id,
+        email: user.email,
+        name: user.name
+    };
+
+    const token = jwt.sign({ userDetail: userDetail }, config.passport_jwt);
+
+    try {
+        const userDocument = await User.findById(user.id);
+        if (userDocument) {
+            userDocument.token = token;
+            await userDocument.save();
         }
+    } catch (error) {
+        console.error("Error occurred while updating user token:", error);
+        return res.status(500).json({ message: "Error occurred while updating user token" });
+    }
+    
+    res.cookie('jwt', token, {
+        httpOnly: false,
+        sameSite: false,
+        secure: true,
+        session: false
+    });
+    // return res.status(200).json({ userDetail, token });
+    return res.status(200).redirect(`${CLIENT_URL}/student_portal`)
+}
+
+module.exports.signIn = async function(req, res, info) {
+    console.log("signIn");
+    // req.locals.user = req.user;
+    const user = req.user;
+    console.log("user ",user);
+    if (!user) {
+        return res.status(400).json({
+            message: info ? info.message : 'Login failed',
+            user: user
+        });
+    }
+    // req.login(user, { session: false }, async (err) => {
+    //     if (err) {
+    //         return res.status(500).send(err);
+    //     }
 
         const userDetail = {
             id: user.id,
@@ -47,9 +86,9 @@ module.exports.signIn = async function(req, res, info) {
             secure: true,
             session: false
         });
-        // return res.status(200).json({ userDetail, token });
-        return res.status(200).redirect(`${CLIENT_URL}/student_portal`)
-    });
+        return res.status(200).json({ userDetail, token });
+        // return res.status(200).redirect(`${CLIENT_URL}/student_portal`)
+    // });
 };
 
 

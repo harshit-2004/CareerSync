@@ -14,19 +14,44 @@ import { cookieSplitter } from "./pages/student_portal/utils";
 import AlumniTPO from "./pages/Alumni Pages/Alumni TPO/alumni_tpo.js";
 import RootHomePage from "./pages/Home Page/RootHomePage.jsx"
 import TpoRoot from "./pages/TPO/TpoRoot.js";
+import TpoLogin from "./pages/Login/TpoLogin.js";
 
 import HR from "./pages/TPO/HR.js";
 
 function App() {
-  const [login, setlogin] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [tpologin,settpologin] = useState(false);
 
   useEffect(() => {
+    const funTpo = async() => {
+      try {
+        const tokens = cookieSplitter(document.cookie);
+        console.log("all cookies ",document.cookie);
+
+        if (!tokens.jwtTpo) {
+          settpologin(false);
+        }
+
+        const previousLoggedIn = await axios.get(`http://localhost:8000/tpo/checkLogin/${tokens.jwtTpo}`, {
+          withCredentials: true,
+          credentials: 'include'
+        });
+        console.log("inside first time login", previousLoggedIn);
+        if (previousLoggedIn.status == 200) {
+          settpologin(true);
+        }
+        console.log("status of tpo login is app.js ",tpologin);
+      }
+      catch (err) {
+        settpologin(false);
+      }
+    }
     const fun = async () => {
       try {
         const tokens = cookieSplitter(document.cookie);
 
         if (!tokens.jwt) {
-          setlogin(false);
+          setLogin(false);
         }
 
         const previousLoggedIn = await axios.get(`http://localhost:8000/checkLogin/${tokens.jwt}`, {
@@ -35,15 +60,16 @@ function App() {
         });
         console.log("inside first time login", previousLoggedIn);
         if (previousLoggedIn.status == 200) {
-          setlogin(true);
+          setLogin(true);
         }
       }
       catch (err) {
-        setlogin(false);
+        setLogin(false);
       }
     }
 
     fun();
+    funTpo();
   }, []);
 
   console.log(login);
@@ -53,19 +79,27 @@ function App() {
       {login &&
         <>
           <Route path="/student_portal">
-            <Route index element={<StudentPortal setLogin={setlogin} />} />
+            <Route index element={<StudentPortal setLogin={setLogin} />} />
             <Route path="notification" element={<Notification />}></Route>
             <Route path="profile" element={null} />
             <Route path="application" element={<Table />} />
           </Route>
 
-          <Route path="/tpo_portal" element={<TpoRoot/>}></Route>
+        </>
+      }
+      {
+        tpologin &&
+        <>
+          <Route path="/tpo_portal">
+            <Route index settpologin={settpologin} tpologin={tpologin} element={<TpoRoot/>}></Route>
+            <Route path="alumni" element={<AlumniTPO />}/>
+          </Route>
         </>
       }
       <Route path="/main-login" element={<Mainlogin />} />
-      <Route path="/login" element={!login ? <Login login={login} setlogin={setlogin} /> : <StudentPortal />} />
+      <Route path="/login" element={!login ? <Login login={login} setLogin={setLogin} /> : <StudentPortal />} />
+      <Route path="/tpoLogin" element={!tpologin ? <TpoLogin login={tpologin} setLogin={settpologin} /> : <TpoRoot settpologin={settpologin} tpologin={tpologin}/> } />
       <Route path="/*" element={<RootHomePage />} />
-      <Route path="/alumni" element={<AlumniTPO />}/>
       <Route path="/table" element={Table}/>
     </Routes>
   )

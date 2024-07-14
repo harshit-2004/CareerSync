@@ -5,21 +5,15 @@ import { useNavigate } from 'react-router-dom';
 const data=[
     {
         id:1,
-        name:"Representative Login",
-        image:"/student.svg",
-        route:'/login'
-    },
-    {
-        id:2,
         name:"Student Login",
         image:"/ir.svg",
         route:'/login'
     },
     {
-        id:3,
+        id:2,
         name:"T&P Office Login",
         image:"/tpo.svg",
-        route:'/tpo_portal'
+        route:'/tpoLogin'
     },
 ];
 

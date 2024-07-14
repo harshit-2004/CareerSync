@@ -4,5 +4,6 @@ const alumni_controller = require('../controllers/alumni_controller');
 
 router.get('/alumni_detail/:currentPage', alumni_controller.alumni_detail);
 router.post('/update', alumni_controller.updateProfile);
+router.post('/add',alumni_controller.alumniAdd);
 
 module.exports = router;

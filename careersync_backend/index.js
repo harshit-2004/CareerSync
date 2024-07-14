@@ -19,13 +19,26 @@ const expressSession = require('express-session');
 const config = require('./config/config');
 
 app.use((req, res, next) => {
-  // console.log(req.headers);
+  // Set the Access-Control-Allow-Origin header to the specific origin
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Request-Method', 'GET,POST,OPTIONS');
+  
+  // Set the Access-Control-Allow-Methods header
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  
+  // Set the Access-Control-Allow-Credentials header
   res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Set the Access-Control-Allow-Headers header
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  return next();
-})
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

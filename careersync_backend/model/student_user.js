@@ -33,10 +33,6 @@ const userSchema = new mongoose.Schema(
         type:String,
         timestamps:true,
         unique:true
-    },
-    gmail_fetch_creds: {
-      refreshToken: String,
-      accessToken: String
     }
   },
   {

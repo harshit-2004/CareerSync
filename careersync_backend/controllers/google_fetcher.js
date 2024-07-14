@@ -2,7 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 const jwt = require('jsonwebtoken');
-const User = require('../model/student_user');
+const tpoUser = require('../model/tpoUser');
 const secrets = require('../config/config');
 
 // Load credentials from file
@@ -10,19 +10,21 @@ const secrets = require('../config/config');
 const config = require('../config/config');
 const { default: axios } = require('axios');
 const oAuth2Client = new google.auth.OAuth2(
-    config.google_client_id, config.google_clientSecret, config.google_callbackUrl);
+    config.google_client_id_tpo, config.google_clientSecret_tpo ,config.google_redirect_uri_tpo);
 oAuth2Client.apiKey = secrets.gmail_api;
 
 const listMessages = async (req, res) => {
     const token = jwt.decode(req.params.token, secrets.passport_jwt);
-    if(token){
-        res.status(300).json({message:"Enter login again"});
-    }
+    // if(token){
+    //     return res.status(300).json({message:"Enter login again"});
+    // }
+    // console.log("token is ",token);
     const userId = token.userDetail.id;
 
     // return if not user found
+    // console.log("user id ",token.userDetail);
 
-    const user = await User.findById(userId);
+    const user = await tpoUser.findById(userId);
     console.log(user.gmail_fetch_creds);
     
 
@@ -94,6 +96,7 @@ const listMessages = async (req, res) => {
 
     } catch (err) {
         console.error('The API returned an error:', err);
+        return res.status(200).json("Error occured");
     }
 }
 

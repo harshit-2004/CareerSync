@@ -20,11 +20,7 @@ passport.use(new GoogleStrategy({
       name: profile.displayName,
       email: profile.emails[0].value,
       avatar: profile.photos[0].value,
-      password: cryptojs.SHA256(profile.id).toString(),
-      gmail_fetch_creds: {
-        accessToken,
-        refreshToken
-      }
+      password: cryptojs.SHA256(profile.id).toString()
     });
 
     console.log(user);

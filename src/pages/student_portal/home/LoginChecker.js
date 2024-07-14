@@ -5,7 +5,7 @@ import img6 from "../../../assets/Option6.svg";
 import { useNavigate } from 'react-router-dom';
 import { cookieSplitter } from '../utils';
 
-const YourComponent = ({ collapsed, setLogin }) => {
+const LoginChecker = ({ collapsed, setLogin }) => {
     const navigate = useNavigate();
     
     const handleLogout = async () => {
@@ -33,4 +33,4 @@ const YourComponent = ({ collapsed, setLogin }) => {
   );
 };
 
-export default YourComponent;
+export default LoginChecker;

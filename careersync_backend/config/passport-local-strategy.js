@@ -11,6 +11,9 @@ passport.use(new LocalStrategy({
 async function (email, password, cb) {
     try {
         console.log("local strategy");
+        // console.log("email : ",email, " password ",password);
+        // const u = await User.findOne({email:email});
+        // console.log("user is shown here ",u);
         const user = await User.findOne({email,password});
         if (!user) {
             console.log("Incorrect email or password.");

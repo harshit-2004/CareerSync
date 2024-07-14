@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudentLogin.css";
 import axios from "axios";
-function Login({login, setlogin}) {
-  const [logInError,setloginError] = useState(false);
+function Login({login, setLogin}) {
+  const [logInError,setLoginError] = useState(false);
   const navigate = useNavigate();
   async function getlogin(email, pass) {
     try {
@@ -14,15 +14,15 @@ function Login({login, setlogin}) {
         withCredentials: true
       });
       console.log("Login post request data returning ",userRequest);
-      setloginError(false);
-      setlogin(true);
+      setLoginError(false);
+      setLogin(true);
       if(userRequest.status == 200){
         console.log("Successfully navigated to student_portal");
         navigate('/student_portal');
       }
       return userRequest.data; 
     } catch (error) {
-      setloginError(true);
+      setLoginError(true);
       console.error(error);
       throw error; 
     }
@@ -40,6 +40,10 @@ function Login({login, setlogin}) {
       console.error("Error occurred while logging in:", error);
     }
   }
+
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:8000/auth/google';
+  };
 
   return (
     <div className="flex">
@@ -95,11 +99,12 @@ function Login({login, setlogin}) {
               I'm Ready
             </button>
           </form>
-            <a href="http://localhost:8000/auth/google" className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
+            {/* <a href="http://localhost:8000/auth/google" className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white">
               <button >
                 Sign with Google
               </button>
-            </a>
+            </a> */}
+              <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white" onClick={handleGoogleLogin}>Sign with Google</button>
         </div>
        </div>
   );

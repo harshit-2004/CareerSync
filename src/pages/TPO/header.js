@@ -1,8 +1,8 @@
 import React from "react";
 import "../../App.css";
 
-function header({ setChild }) {
-
+function header({ setChild ,tpologin }) {
+  console.log("status of tpo login is ",tpologin);
   return (
     <div className="body">
       <nav className="first-big-box">
@@ -37,8 +37,19 @@ function header({ setChild }) {
                 className="loginbutton font-inter font-bold px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600"
                 onClick={() => setChild("alumniTpo")}
               >
-                Alumni
+                Alumni's
               </button>
+            </li>
+            <li>
+              {
+                tpologin &&
+                <button
+                  className="loginbutton font-inter font-bold px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600"
+                  onClick={() => setChild("logout")}
+                >
+                  Log Out
+                </button>
+              }
             </li>
           </ul>
         </div>

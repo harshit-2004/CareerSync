@@ -47,7 +47,7 @@ const Table = () => {
       avatar:
         "https://pbs.twimg.com/profile_images/1267713887165485061/WUR4QXtd_400x400.jpg",
       name: "Flipkart",
-      result: "Accepted",
+      result: "Rejected",
       position: "Laravel engineer",
       campus: "Oncampus"
     },
@@ -55,7 +55,7 @@ const Table = () => {
       avatar:
         "https://speedmedia.jfrog.com/08612fe1-9391-4cf3-ac1a-6dd49c36b276/https://media.jfrog.com/wp-content/uploads/2017/11/06025750/Atlassian-Logo.jpg",
       name: "Atlassian",
-      result: "Accepted",
+      result: "Rejected",
       position: "Open source manager",
       campus: "Oncampus"
     },
