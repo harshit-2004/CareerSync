@@ -15,12 +15,10 @@ function TpoRoot({ settpologin , tpologin }) {
         pageComponent = <HR />;
     } else if (child === "alumniTpo") {
         pageComponent = <AlumniTPO />;
-    } else if(child === "logout"){
-        pageComponent = <LogOutTpo settpologin={settpologin}/>
     }
   return (
         <>
-            <Header setChild={setChild} tpologin={tpologin}/>
+            <Header setChild={setChild} tpologin={tpologin} settpologin={settpologin} />
             {pageComponent}
         </>
   );

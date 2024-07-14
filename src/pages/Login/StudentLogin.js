@@ -104,7 +104,7 @@ function Login({login, setLogin}) {
                 Sign with Google
               </button>
             </a> */}
-              <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white" onClick={handleGoogleLogin}>Sign with Google</button>
+              <button className="text-3xl text-center my-5 py-4 px-10 font-oswald bg-black text-white" onClick={handleGoogleLogin}>Sign with Google 🚀</button>
         </div>
        </div>
   );

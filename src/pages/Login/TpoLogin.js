@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGoogleLogin, GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { useGoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 
 function TpoLogin({ login, setLogin }) {
@@ -15,14 +15,6 @@ function TpoLogin({ login, setLogin }) {
       }, {
         withCredentials: true,
       });
-
-      
-
-      // const { email, name, token, google_creds } = data;
-      // console.log("User email:", email);
-      // console.log("User name:", name);
-      // console.log("Token:", token);
-      // console.log("Google creds:", google_creds);
 
       setLoginError(false);
       setLogin(true);
@@ -48,32 +40,34 @@ function TpoLogin({ login, setLogin }) {
   });
 
   return (
-      <div className="flex">
-        <div className="flex border-l-4 p-20 pt-10 flex-col flex-auto bg-[#F6F8FE]">
-          <div className="flex flex-col">
-            <div className="flex mt-10 justify-start items-center">
-              <img
-                className="w-60 h-60"
-                src="/careersynclogo.svg"
-                alt="CareerSync Logo"
-              />
-              <p className="text-6xl font-bebas flex justify-center relative right-5 py-3">
-                CAREERSYNC Tpo Login
-              </p>
-            </div>
-            <div className="text-6xl font-playFair mb-2">
-              Unlock Your Future
-            </div>
-            <div className="text-1xl text-[#959595]">
-              Enter your University Credentials
-            </div>
+    <div className="flex">
+      <div className="flex border-l-4 p-20 pt-10 flex-col flex-auto bg-[#F6F8FE]">
+        <div className="flex flex-col">
+          <div className="flex mt-10 justify-start items-center">
+            <img
+              className="w-60 h-60"
+              src="/careersynclogo.svg"
+              alt="CareerSync Logo"
+            />
+            <p className="text-6xl font-bebas flex justify-center relative right-5 py-3">
+              CAREERSYNC
+            </p>
           </div>
-          <div className="flex flex-col items-center">
-          <button onClick={()=>googleLogin()} >Sign in with Google 🚀 </button>
-            {logInError && <div className="text-red-700">Failed to login with Google. Try again.</div>}
+          <div className="text-6xl font-playFair mb-2">
+            TPO LOGIN
+          </div>
+          <div className="text-1xl text-[#959595]">
+            Enter your University Credentials
           </div>
         </div>
+        <div className="flex flex-col items-center justify-center h-32">
+          <button onClick={googleLogin} className="flex items-center justify-center text-xl h-20 w-56 bg-blue-500 text-white rounded-lg">
+            Sign in with Google 
+          </button>
+          {logInError && <div className="text-red-700 mt-2">Failed to login with Google. Try again.</div>}
+        </div>
       </div>
+    </div>
   );
 }
 
